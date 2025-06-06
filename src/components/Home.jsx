@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { DollarSign, Home as HomeIcon, Layers } from 'react-feather';
+import { DollarSign, Home as HomeIcon, Layers, Award, Zap } from 'react-feather';
 import './Home.css';
 
 const testimonials = [
   "Great service and support for rural EV maintenance!",
   "Affordable and scalable diagnostics solutions.",
   "Partnering with them has boosted our service efficiency."
+];
+
+const whyChooseUsPoints = [
+  "India’s first rural-centric EV telematics platform",
+  "Offline analytics, GSM fallback, and CAN-based fault detection",
+  "Up to 60% cheaper than imported alternatives",
+  "Enables diagnostics, skilling, and servicing — all under one ecosystem",
+  "Validated with 90%+ diagnostic accuracy in pilot deployments"
+];
+
+const futureVisionPoints = [
+  "Integrated Battery Management + Vehicle Control Unit",
+  "Remote locking, geofencing, and anti-theft protection",
+  "Battery-to-home power sharing capabilities",
+  "Smart range estimations and route planning",
+  "Integration with charging & battery swap stations"
 ];
 
 const Home = () => {
@@ -23,8 +39,8 @@ const Home = () => {
       {/* Hero Banner */}
       <section className="hero-banner">
         <div className="hero-content">
-          <h1>Powering Bharat’s EV Backbone with Smart Diagnostics & Deep-Tech</h1>
-          <p className="subtitle">Empowering rural India with cutting-edge EV maintenance solutions.</p>
+          <h1>Motoget Navyug Innovations Pvt Ltd: Redefining Innovation in Electric Mobility</h1>
+          <p className="subtitle">Powering Bharat’s EV Backbone with Smart Diagnostics & Deep-Tech.</p>
           <div className="cta-buttons">
             <button className="btn gold">Partner</button>
             <button className="btn gold">Enquire</button>
@@ -36,7 +52,7 @@ const Home = () => {
       {/* Visual Section */}
       <section className="visual-section">
         <div className="visual-placeholder">
-          <img src="/path-to-image.jpg" alt="EV diagnostic modules and rural service hubs" />
+          <img src="/images/companyimg.jpeg" alt="EV diagnostic modules and rural service hubs" />
         </div>
       </section>
 
@@ -65,6 +81,35 @@ const Home = () => {
         <p>
           Smart diagnostics solutions tailored for Bharat’s electric vehicle ecosystem, enabling efficient maintenance and service in rural areas.
         </p>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="why-choose-us">
+        <div className="why-header">
+          <Award className="why-icon" />
+          <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Why Choose Us</h2>
+        </div>
+        <p className="usp-tagline">
+          <span role="img" aria-label="spark"></span> <b>Make-in-Bharat. Rural-First. Data-Driven.</b>
+        </p>
+        <ul className="why-list">
+          {whyChooseUsPoints.map((point, idx) => (
+            <li key={idx}>{point}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Future Vision */}
+      <section className="future-vision">
+        <div className="future-header">
+          <Zap className="future-icon" />
+          <h2>&nbsp; &nbsp; &nbsp;&nbsp;Future Vision</h2>
+        </div>
+        <ul className="future-list">
+          {futureVisionPoints.map((point, idx) => (
+            <li key={idx}>{point}</li>
+          ))}
+        </ul>
       </section>
 
       {/* Testimonials Carousel */}

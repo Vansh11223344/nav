@@ -3,22 +3,22 @@ import './AboutUs.css';
 
 const leaders = [
   {
-    name: "Aarav Sharma",
+    name: "Gyaneesh Bhatt",
     title: "Founder & CEO",
     photo: "https://randomuser.me/api/portraits/men/32.jpg",
-    bio: "Aarav is an IIT alumnus with 15+ years in automotive deep-tech. He is passionate about democratizing EV diagnostics for all of Bharat."
+    bio: "Tech visionary and innovator with extensive experience in IoT and EV systems."
   },
   {
-    name: "Priya Menon",
-    title: "Chief Technology Officer",
+    name: "Naibedya Bhuyan",
+    title: "Co-Founder & CTO",
     photo: "https://randomuser.me/api/portraits/women/44.jpg",
-    bio: "Priya leads our R&D. She has pioneered affordable, scalable diagnostic modules for rural India’s unique needs."
+    bio: "Leads software development, AI integration, and overall platform intelligence."
   },
   {
-    name: "Rahul Verma",
-    title: "Head of Operations",
+    name: "Shreyansh Bhatt",
+    title: "CTO",
     photo: "https://randomuser.me/api/portraits/men/54.jpg",
-    bio: "Rahul brings a decade of rural mobility operations expertise, ensuring our solutions reach the last mile."
+    bio: "Heads embedded systems, firmware architecture, and hardware innovation.    "
   }
 ];
 
@@ -29,19 +29,21 @@ const AboutUs = () => {
       <section className="mission-vision">
         <h2>Mission</h2>
         <p>
-          To empower every corner of Bharat with accessible, intelligent EV diagnostics, driving sustainable mobility for all.
+        To make electric vehicle diagnostics, servicing, and safety accessible to every corner of Bharat through deep-tech innovation, decentralized infrastructure, and skilled rural workforce development.
         </p>
         <h2>Vision</h2>
         <p>
-          To be the backbone of India’s electric revolution, enabling a future where technology bridges urban-rural divides.
+          To become India’s leading EV servicing backbone by integrating real-time analytics, grassroots service hubs, and smart diagnostics across the 2W and 3W ecosystem.
         </p>
       </section>
 
       {/* Founding Story */}
       <section className="history">
-        <h2>Our Story</h2>
+        <h2>Join our mission to power India’s EV revolution</h2>
         <p>
-          Founded in 2022, our journey began when our founders witnessed firsthand the challenges rural mechanics faced with new EV technologies. Determined to bridge this gap, we built a team of engineers and grassroots experts to design diagnostics that work for Bharat, not just the metros.
+         👉 Partner with us<br/>
+         👉 Invest in future-ready EV technology<br/>
+         👉 Empower your fleet or EV service hub with real-time intelligence
         </p>
       </section>
 

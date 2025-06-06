@@ -16,27 +16,27 @@ const innovations = [
   {
     icon: <Cpu className="tech-icon" />,
     title: "IoT + Edge AI",
-    desc: "Real-time vehicle health monitoring with edge-processed data, reducing cloud dependency and latency."
+    desc: "Real-time diagnostics through embedded machine learning"
   },
   {
-    icon: <Activity className="tech-icon" />,
-    title: "Embedded ML Models",
-    desc: "Self-learning algorithms that adapt to regional driving patterns and battery behaviors."
+    icon: <Zap className="tech-icon" />,
+    title: "Rural Skilling Tech Kit",
+    desc: "Hardware + software package to train EV technicians."
   },
   {
     icon: <CloudOff className="tech-icon" />,
-    title: "Offline-First Architecture",
-    desc: "Works seamlessly in low/no connectivity areas—critical for Bharat's rural EV ecosystems."
+    title: "Decentralized Data Architecture",
+    desc: "Designed for low-latency analytics."
   },
   {
     icon: <Wifi className="tech-icon" />,
     title: "GSM-WiFi Hybrid Switching",
-    desc: "Automatically switches between networks to maintain diagnostic continuity."
+    desc: "Reliable performance across urban and rural zones"
   },
   {
-    icon: <Zap className="tech-icon" />,
-    title: "CAN Diagnostics 2.0",
-    desc: "Next-gen controller-area network analysis for Indian EV drivetrains and battery systems."
+    icon: <Activity className="tech-icon" />,
+    title: "Patent-Pending Designs",
+    desc: "Proprietary embedded firmware & circuits for diagnostics and safety."
   }
 ];
 

@@ -41,22 +41,22 @@ const ContactUs = () => {
             <MapPin className="contact-icon" />
             <div>
               <strong>Address</strong>
-              <p>123 Navyug EV Lane, Sector 21, Gurugram, Haryana, India</p>
+              <p>Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand</p>
             </div>
           </div>
           <div className="info-block">
             <Phone className="contact-icon" />
             <div>
               <strong>Phone</strong>
-              <p>+91 98765 43210</p>
-              <p>+91 91234 56789</p>
+              <p>+91 98355 94986</p>
+              <p>+91 77358 37675</p>
             </div>
           </div>
           <div className="info-block">
             <Mail className="contact-icon" />
             <div>
               <strong>Email</strong>
-              <p>hello@navyugev.com</p>
+              <p>navyuginnovations@gmail.com</p>
             </div>
           </div>
         </div>

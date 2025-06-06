@@ -134,3 +134,79 @@
     padding: 16px 8px 12px;
   }
 }
+.vehicle-specs-section, .charging-infra-section {
+  background: #fffbe7;
+  border-left: 5px solid #D4AF37;
+  border-radius: 12px;
+  padding: 28px 22px;
+  margin-bottom: 36px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+}
+
+.vehicle-specs-section h2,
+.charging-infra-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #D4AF37;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.vehicle-specs-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.vehicle-types, .key-features {
+  flex: 1 1 240px;
+}
+
+.vehicle-types h3, .key-features h3 {
+  color: #1A1A1A;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.vehicle-types ul, .key-features ul, .charging-infra-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vehicle-types li, .key-features li, .charging-infra-list li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #1A1A1A;
+}
+
+.section-icon {
+  color: #D4AF37;
+  width: 30px;
+  height: 30px;
+}
+
+.check-icon {
+  color: #D4AF37;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.charging-infra-list {
+  margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+  .vehicle-specs-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

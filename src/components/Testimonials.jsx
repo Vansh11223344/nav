@@ -4,12 +4,12 @@ import './Testimonials.css';
 
 const testimonials = [
   {
-    quote: "It’s like a stethoscope for EVs – our technicians can now detect faults faster.",
+    quote: "It’s like a stethoscope for EVs – our technicians can now detect faults faster and build trust with customers.",
     author: "Local Garage Owner, Odisha"
   },
   {
-    quote: "Downtime is down, customer trust is up. Navyug is a gamechanger for rural EVs.",
-    author: "Fleet Operator, UP"
+    quote: "The device helped us diagnose battery issues we didn’t even know existed. Our downtime has reduced by 35%.",
+    author: "Fleet Operator, Chhattisgarh"
   },
   {
     quote: "The skilling kits helped our mechanics learn diagnostics in their own language.",

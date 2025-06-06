@@ -4,7 +4,9 @@ import {
   Tool,
   BatteryCharging,
   BarChart2,
-  Layers
+  Layers,
+  Zap,
+  CheckCircle
 } from 'react-feather';
 import './OurWork.css';
 
@@ -31,6 +33,29 @@ const modules = [
   },
 ];
 
+const vehicleTypes = [
+  "Electric 2-Wheelers (2W)",
+  "Electric 3-Wheelers (3W)",
+  "Fleet vehicles, personal EVs & swappable battery systems"
+];
+
+const keyFeatures = [
+  "Real-time GPS Tracking (4G/GSM + Wi-Fi switching)",
+  "Battery Diagnostics via CAN/UART",
+  "Offline Edge Processing for rural or low-connectivity areas",
+  "AI-driven Fault Prediction Alerts",
+  "Modular Design for retrofitting on existing EVs",
+  "60% cost reduction vs imported solutions",
+  "Make-in-India certified hardware"
+];
+
+const chargingInfra = [
+  "Collaborating with local garages and battery labs to build smart charging & diagnostics hubs",
+  "Analytics for battery swap stations and charger performance",
+  "Integration-ready with predictive BMS-level charging intelligence",
+  "Support for universal charging interfaces and DC fast-charging protocols"
+];
+
 const OurWork = () => {
   return (
     <div className="ourwork-container">
@@ -41,6 +66,45 @@ const OurWork = () => {
         <Layers className="modular-visual" />
         <span className="modular-label">Modular, Scalable, Rural-Ready</span>
       </div>
+
+      {/* Vehicle Portfolio & Key Specs */}
+      <section className="vehicle-specs-section">
+        <h2>
+          <Cpu className="section-icon" /> Vehicle Portfolio & Key Specs – Telematics Platform
+        </h2>
+        <div className="vehicle-specs-content">
+          <div className="vehicle-types">
+            <h3>Supported Vehicles:</h3>
+            <ul>
+              {vehicleTypes.map((type, idx) => (
+                <li key={idx}><CheckCircle className="check-icon" /> {type}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="key-features">
+            <h3>Key Features:</h3>
+            <ul>
+              {keyFeatures.map((feature, idx) => (
+                <li key={idx}><CheckCircle className="check-icon" /> {feature}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Charging Infrastructure */}
+      <section className="charging-infra-section">
+        <h2>
+          <Zap className="section-icon" /> Charging Infrastructure
+        </h2>
+        <ul className="charging-infra-list">
+          {chargingInfra.map((item, idx) => (
+            <li key={idx}><CheckCircle className="check-icon" /> {item}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Existing Modules */}
       <div className="work-modules">
         {modules.map((mod, idx) => (
           <div className="work-module" key={idx} role="region" aria-label={mod.title}>

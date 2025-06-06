@@ -12,7 +12,7 @@ const opportunityPoints = [
   {
     icon: <BarChart2 className="mo-icon" />,
     title: "India’s $150B EV Market",
-    desc: "India’s electric vehicle sector is projected to reach $150B+, with rural adoption as the next growth frontier."
+    desc: "India’s EV industry is projected to hit $150B by 2030, but rural diagnostics and servicing are severely underserved."
   },
   {
     icon: <MapPin className="mo-icon" />,
@@ -21,13 +21,13 @@ const opportunityPoints = [
   },
   {
     icon: <Award className="mo-icon" />,
-    title: "Navyug’s Differentiator vs Imports",
-    desc: "Built-for-Bharat: rugged, affordable, and offline-first—unlike imported solutions designed for urban markets."
+    title: "Built for Bharat, Not Just Cities",
+    desc: "Modular, cost-effective solutions tailored for Tier 2/3 markets."
   },
   {
     icon: <Users className="mo-icon" />,
     title: "Impact in Tier 2/3 Cities",
-    desc: "Our platform is already reducing downtime and boosting productivity in emerging EV clusters."
+    desc: "From retrofit kits to technician training and real-time analytics, our cost-effective platform powers uptime and productivity where it matters most."
   },
   {
     icon: <TrendingUp className="mo-icon" />,
