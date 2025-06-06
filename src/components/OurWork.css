@@ -1,0 +1,136 @@
+/* OurWork.css */
+
+.ourwork-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 20px 60px;
+  background: #fff;
+  color: #1A1A1A;
+  font-family: 'Inter', 'Open Sans', sans-serif;
+}
+
+.work-title {
+  text-align: center;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  color: #D4AF37;
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+
+.modules-visual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 38px;
+}
+
+.modular-visual {
+  width: 68px;
+  height: 68px;
+  stroke: #D4AF37;
+  margin-bottom: 8px;
+}
+
+.modular-label {
+  color: #D4AF37;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.work-modules {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.work-module {
+  flex: 1 1 240px;
+  min-width: 240px;
+  max-width: 340px;
+  background: #fffbe7;
+  border-left: 5px solid #D4AF37;
+  border-radius: 12px;
+  padding: 28px 22px 22px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.work-module:hover {
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.15);
+}
+
+.work-icon {
+  stroke: #D4AF37;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+}
+
+.work-module h2 {
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  color: #1A1A1A;
+  font-size: 1.18rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.work-module p {
+  font-size: 1.05rem;
+  text-align: center;
+  color: #333;
+}
+
+.work-cta {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.btn {
+  background-color: #D4AF37;
+  border: none;
+  color: #1A1A1A;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.btn.gold:hover {
+  background-color: #b5942f;
+}
+
+@media (max-width: 900px) {
+  .work-modules {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+  .work-module {
+    width: 90%;
+    min-width: 200px;
+  }
+  .work-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .ourwork-container {
+    padding: 16px 4vw 40px;
+  }
+  .work-module {
+    padding: 16px 8px 12px;
+  }
+}

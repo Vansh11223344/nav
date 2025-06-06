@@ -1,0 +1,95 @@
+/* Testimonials.css */
+
+.testimonials-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  background: #fff;
+  color: #1A1A1A;
+  font-family: 'Inter', 'Open Sans', sans-serif;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  color: #D4AF37;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.quote-slider {
+  min-height: 110px;
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+blockquote {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #1A1A1A;
+  font-style: italic;
+  margin: 0 auto 0.5em;
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+.quote-author {
+  display: block;
+  color: #D4AF37;
+  font-size: 1rem;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+.metrics {
+  display: flex;
+  justify-content: center;
+  gap: 38px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.metric {
+  background: #fffbe7;
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 150px;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+  border-left: 4px solid #D4AF37;
+}
+
+.metric-icon {
+  stroke: #D4AF37;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  color: #D4AF37;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.metric-label {
+  font-size: 1rem;
+  color: #1A1A1A;
+  margin-top: 4px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .testimonials-container {
+    padding: 16px 4vw 40px;
+  }
+  blockquote {
+    font-size: 1.05rem;
+  }
+  .metrics {
+    gap: 16px;
+  }
+}
