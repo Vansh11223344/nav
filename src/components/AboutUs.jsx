@@ -5,19 +5,19 @@ const leaders = [
   {
     name: "Gyaneesh Bhatt",
     title: "Founder & CEO",
-    photo: "https://randomuser.me/api/portraits/men/32.jpg",
+    photo: "./images/Gyaneesh.jpg",
     bio: "Tech visionary and innovator with extensive experience in IoT and EV systems."
   },
   {
     name: "Naibedya Bhuyan",
     title: "Co-Founder & CTO",
-    photo: "https://randomuser.me/api/portraits/women/44.jpg",
+    photo: "./images/Naibedya.JPG",
     bio: "Leads software development, AI integration, and overall platform intelligence."
   },
   {
     name: "Shreyansh Bhatt",
     title: "CTO",
-    photo: "https://randomuser.me/api/portraits/men/54.jpg",
+    photo: "./images/Shreyansh.jpeg",
     bio: "Heads embedded systems, firmware architecture, and hardware innovation.    "
   }
 ];

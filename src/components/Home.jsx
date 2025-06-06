@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { DollarSign, Home as HomeIcon, Layers, Award, Zap } from 'react-feather';
+import { DollarSign, Home as HomeIcon, Layers, Award, Zap, MessageCircle } from 'react-feather';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
 const testimonials = [
@@ -26,6 +27,7 @@ const futureVisionPoints = [
 
 const Home = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -134,12 +136,21 @@ const Home = () => {
         <button className="btn gold">Train</button>
       </section>
 
+      {/* Floating Chatbot Button */}
+      <button
+        className="chatbot-fab"
+        onClick={() => navigate('/chatbot')}
+        aria-label="Open Chatbot"
+      >
+        <MessageCircle size={28} />
+      </button>
+
       {/* Footer */}
       <footer className="footer">
         <div className="social-contact">
           <a href="/contact">Contact</a>
-          <a href="#">Twitter</a>
-          <a href="#">LinkedIn</a>
+         <a href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA==" target="_blank" rel="noopener noreferrer">Instagram</a>
+         <a href="https://www.linkedin.com/in/navyug-innovation-842b85368?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div className="copyright">
           © {new Date().getFullYear()} EV Bharat. All rights reserved.

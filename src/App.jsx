@@ -9,6 +9,10 @@ import MarketOpportunity from './components/MarketOpportunity';
 import Testimonials from './components/Testimonials';
 import ContactUs from './components/ContactUs';
 import BlogNews from './components/BlogNews';
+import Chatbot from './components/Chatbot';
+import Service from './components/Service';
+
+
 
 function App() {
   return (
@@ -23,6 +27,9 @@ function App() {
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/blog" element={<BlogNews />} />
+          <Route path="/chatbot" element={<Chatbot />} />
+          <Route path="/service" element={<Service />} />
+
         </Route>
       </Routes>
     </Router>

@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Testimonials", to: "/testimonials" },
   { label: "Contact", to: "/contact" },
   { label: "Blog", to: "/blog" },
+  { label: "Services", to: "/service" },
 ];
 
 const Header = ({ menuOpen, setMenuOpen }) => {
