@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   Cpu,
   CloudOff,
@@ -14,27 +14,27 @@ import './TechInnovation.css';
 
 const innovations = [
   {
-    icon: <Cpu className="tech-icon" />,
+    icon: <Cpu className="tech-icon pulse" />,
     title: "IoT + Edge AI",
     desc: "Real-time diagnostics through embedded machine learning"
   },
   {
-    icon: <Zap className="tech-icon" />,
+    icon: <Zap className="tech-icon pulse" />,
     title: "Rural Skilling Tech Kit",
     desc: "Hardware + software package to train EV technicians."
   },
   {
-    icon: <CloudOff className="tech-icon" />,
+    icon: <CloudOff className="tech-icon pulse" />,
     title: "Decentralized Data Architecture",
     desc: "Designed for low-latency analytics."
   },
   {
-    icon: <Wifi className="tech-icon" />,
+    icon: <Wifi className="tech-icon pulse" />,
     title: "GSM-WiFi Hybrid Switching",
     desc: "Reliable performance across urban and rural zones"
   },
   {
-    icon: <Activity className="tech-icon" />,
+    icon: <Activity className="tech-icon pulse" />,
     title: "Patent-Pending Designs",
     desc: "Proprietary embedded firmware & circuits for diagnostics and safety."
   }
@@ -60,20 +60,35 @@ const whitePaperContent = [
 ];
 
 const TechInnovation = () => {
-  const [showWhitePaper, setShowWhitePaper] = useState(false);
+  const [showWhitePaper, setShowWhitePaper] = React.useState(false);
+  const whitePaperRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const handleDownload = () => {
-    const element = document.getElementById('white-paper-content');
-    html2pdf().from(element).save('EV-Whitepaper.pdf');
+    if (whitePaperRef.current) {
+      html2pdf().from(whitePaperRef.current).save('EV-Whitepaper.pdf');
+    }
   };
 
   return (
     <div className="tech-container">
       {/* Hero */}
-      <section className="tech-hero">
+      <section className="tech-hero animate-on-scroll">
         <h1>Deep-Tech for Bharat's EV Future</h1>
         <div className="architecture-visual">
-          <Layers className="arch-icon" />
+          <Layers className="arch-icon pulse" />
           <span>Modular Architecture</span>
         </div>
       </section>
@@ -81,7 +96,7 @@ const TechInnovation = () => {
       {/* Tech Grid */}
       <div className="tech-grid">
         {innovations.map((item, idx) => (
-          <div className="tech-card" key={idx}>
+          <div className={`tech-card animate-on-scroll fade-in delay-${idx}`} key={idx}>
             {item.icon}
             <div>
               <h2>{item.title}</h2>
@@ -92,7 +107,7 @@ const TechInnovation = () => {
       </div>
 
       {/* Patent Section */}
-      <section className="patent-section">
+      <section className="patent-section animate-on-scroll fade-in delay-5">
         <h2>Patent-Pending Innovations</h2>
         <p>
           While we can't disclose specifics, our IP portfolio includes breakthroughs in frugal edge computing, 
@@ -101,9 +116,9 @@ const TechInnovation = () => {
       </section>
 
       {/* White Paper Section */}
-      <div className={`white-paper-viewer ${showWhitePaper ? 'active' : ''}`}>
+      <div className={`white-paper-viewer animate-on-scroll fade-in delay-6 ${showWhitePaper ? 'active' : ''}`}>
         {showWhitePaper ? (
-          <div id="white-paper-content" className="white-paper-content">
+          <div id="white-paper-content" className="white-paper-content" ref={whitePaperRef}>
             <button 
               className="close-btn"
               onClick={() => setShowWhitePaper(false)}
@@ -132,14 +147,14 @@ const TechInnovation = () => {
             </div>
           </div>
         ) : (
-          <div className="diagram-placeholder">
+          <div className="diagram-placeholder animate-on-scroll fade-in delay-7">
             [Clean line diagrams of architecture and data flow]
           </div>
         )}
       </div>
 
       {/* CTA */}
-      <div className="tech-cta">
+      <div className="tech-cta animate-on-scroll fade-in delay-8">
         <button 
           className="btn gold" 
           onClick={() => setShowWhitePaper(true)}

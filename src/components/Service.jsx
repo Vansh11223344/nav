@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Settings, Info } from 'react-feather';
 import './Service.css';
 
@@ -35,13 +35,26 @@ Electric Vehicle (EV) technology is rapidly evolving, focusing on battery effici
 `;
 
 const Service = () => {
+  useEffect(() => {
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="service-container">
-      <h1 className="service-title">Our Services</h1>
+      <h1 className="service-title animate-on-scroll">Our Services</h1>
       <section className="services-offered">
         {services.map((service, idx) => (
-          <div className="service-card" key={idx} role="region" aria-label={service.name}>
-            <Settings className="service-icon gold" />
+          <div className={`service-card animate-on-scroll fade-in delay-${idx}`} key={idx} role="region" aria-label={service.name}>
+            <Settings className="service-icon gold pulse" />
             <h2>{service.name}</h2>
             <p>{service.description}</p>
             <p className="service-price">Price: {service.price}</p>
@@ -49,9 +62,9 @@ const Service = () => {
         ))}
       </section>
 
-      <section className="ev-tech-info">
+      <section className="ev-tech-info animate-on-scroll fade-in delay-5">
         <div className="ev-tech-header">
-          <Info className="info-icon gold" />
+          <Info className="info-icon gold pulse" />
           <h2>About EV Technology</h2>
         </div>
         <p>{evTechnologyInfo}</p>

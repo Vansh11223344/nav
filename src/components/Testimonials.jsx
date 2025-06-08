@@ -33,18 +33,44 @@ const Testimonials = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Animate in on scroll
+  useEffect(() => {
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="testimonials-container">
-      <h1 className="testimonials-title">Testimonials & Impact</h1>
-      <div className="quote-slider">
+    <div className="testimonials-container animate-on-scroll">
+      <h1 className="testimonials-title fade-in delay-0">Testimonials & Impact</h1>
+      <div className="quote-slider fade-in delay-1">
         <blockquote>
-          “{testimonials[testimonialIndex].quote}”
+          <span className="quote-mark">“</span>
+          {testimonials[testimonialIndex].quote}
+          <span className="quote-mark">”</span>
           <span className="quote-author">— {testimonials[testimonialIndex].author}</span>
         </blockquote>
+        <div className="testimonial-dots">
+          {testimonials.map((_, idx) => (
+            <span
+              key={idx}
+              className={`dot ${idx === testimonialIndex ? 'active' : ''}`}
+              onClick={() => setTestimonialIndex(idx)}
+              aria-label={`Go to testimonial ${idx + 1}`}
+            />
+          ))}
+        </div>
       </div>
-      <div className="metrics">
+      <div className="metrics fade-in delay-2">
         {metrics.map((m, idx) => (
-          <div className="metric" key={idx}>
+          <div className="metric pulse" key={idx}>
             <CheckCircle className="metric-icon" />
             <span className="metric-value">{m.value}</span>
             <span className="metric-label">{m.label}</span>

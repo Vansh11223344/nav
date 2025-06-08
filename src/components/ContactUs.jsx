@@ -1,6 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Send } from 'react-feather';
 import './ContactUs.css';
+
+const infoBlocks = [
+  {
+    icon: <MapPin className="contact-icon pulse" />,
+    title: "Address",
+    content: "Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand"
+  },
+  {
+    icon: <Phone className="contact-icon pulse" />,
+    title: "Phone",
+    content: (
+      <>
+        +91 98355 94986<br />
+        +91 77358 37675
+      </>
+    )
+  },
+  {
+    icon: <Mail className="contact-icon pulse" />,
+    title: "Email",
+    content: "navyuginnovations@gmail.com"
+  }
+];
 
 const ContactUs = () => {
   const [form, setForm] = useState({
@@ -10,6 +33,21 @@ const ContactUs = () => {
     type: 'General',
     newsletter: false
   });
+
+useEffect(() => {
+  const observer = new window.IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  return () => observer.disconnect();
+}, []);
+
+
 
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
@@ -34,33 +72,20 @@ const ContactUs = () => {
 
   return (
     <div className="contact-container">
-      <h1 className="contact-title">Contact Us</h1>
-      <div className="contact-info-section">
+      <h1 className="contact-title animate-on-scroll">Contact Us</h1>
+      <div className="contact-info-section animate-on-scroll">
         <div className="contact-info">
-          <div className="info-block">
-            <MapPin className="contact-icon" />
-            <div>
-              <strong>Address</strong>
-              <p>Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand</p>
+          {infoBlocks.map((block, idx) => (
+            <div className={`info-block fade-in delay-${idx}`} key={idx}>
+              {block.icon}
+              <div>
+                <strong>{block.title}</strong>
+                <p>{block.content}</p>
+              </div>
             </div>
-          </div>
-          <div className="info-block">
-            <Phone className="contact-icon" />
-            <div>
-              <strong>Phone</strong>
-              <p>+91 98355 94986</p>
-              <p>+91 77358 37675</p>
-            </div>
-          </div>
-          <div className="info-block">
-            <Mail className="contact-icon" />
-            <div>
-              <strong>Email</strong>
-              <p>navyuginnovations@gmail.com</p>
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="map-embed">
+        <div className="map-embed slide-in-right">
           <iframe
             title="Navyug EV Location"
             src="https://www.openstreetmap.org/export/embed.html?bbox=77.0266%2C28.4595%2C77.0366%2C28.4695&amp;layer=mapnik"
@@ -70,9 +95,9 @@ const ContactUs = () => {
           ></iframe>
         </div>
       </div>
-      <div className="contact-form-section">
+      <div className="contact-form-section animate-on-scroll">
         <form className="contact-form" onSubmit={handleSubmit}>
-          <label>
+          <label className="fade-in">
             Name
             <input
               type="text"
@@ -83,7 +108,7 @@ const ContactUs = () => {
               autoComplete="off"
             />
           </label>
-          <label>
+          <label className="fade-in delay-1">
             Email
             <input
               type="email"
@@ -94,7 +119,7 @@ const ContactUs = () => {
               autoComplete="off"
             />
           </label>
-          <label>
+          <label className="fade-in delay-2">
             Message
             <textarea
               name="message"
@@ -104,7 +129,7 @@ const ContactUs = () => {
               required
             />
           </label>
-          <label>
+          <label className="fade-in delay-3">
             Inquiry Type
             <select name="type" value={form.type} onChange={handleChange}>
               <option>General</option>
@@ -113,7 +138,7 @@ const ContactUs = () => {
               <option>Sales</option>
             </select>
           </label>
-          <div className="newsletter-box">
+          <div className="newsletter-box fade-in delay-4">
             <input
               type="checkbox"
               id="newsletter"
@@ -125,7 +150,7 @@ const ContactUs = () => {
               Sign me up for updates and insights
             </label>
           </div>
-          <button className="btn gold" type="submit">
+          <button className="btn gold fade-in delay-5" type="submit">
             <Send className="send-icon" /> Send Message
           </button>
         </form>
