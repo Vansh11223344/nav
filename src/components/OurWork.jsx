@@ -115,17 +115,33 @@ const OurWork = () => {
         </ul>
       </section>
 
+      {/* Full-width Images */}
+      <div className="full-width-image-wrapper">
+        <img
+          src="./images/ourwork1.jpeg"
+          alt="EV diagnostic in action"
+          className="full-width-image animate-on-scroll fade-in delay-3"
+          loading="lazy"
+        />
+        <img
+          src="./images/ourwork2.jpeg"
+          alt="Smart charging hub"
+          className="full-width-image animate-on-scroll fade-in delay-4"
+          loading="lazy"
+        />
+      </div>
+
       {/* Existing Modules */}
       <div className="work-modules">
         {modules.map((mod, idx) => (
-          <div className={`work-module animate-on-scroll fade-in delay-${idx + 3}`} key={idx} role="region" aria-label={mod.title}>
+          <div className={`work-module animate-on-scroll fade-in delay-${idx + 5}`} key={idx} role="region" aria-label={mod.title}>
             {mod.icon}
             <h2>{mod.title}</h2>
             <p>{mod.desc}</p>
           </div>
         ))}
       </div>
-      <div className="work-cta animate-on-scroll fade-in delay-7">
+      <div className="work-cta animate-on-scroll fade-in delay-9">
         <button className="btn gold" aria-label="Contact us for deployment">Contact us for deployment</button>
         <button className="btn gold" aria-label="Become a partner">Become a partner</button>
       </div>

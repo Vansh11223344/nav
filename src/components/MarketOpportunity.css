@@ -1,25 +1,47 @@
-/* MarketOpportunity.css */
+:root {
+  --gold: #D4AF37;
+  --gold-dark: #b5942f;
+  --bg: #fff;
+  --card-bg: #fffbe7;
+  --text-main: #1A1A1A;
+  --text-secondary: #333;
+  --shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+}
+
+.dark {
+  --gold: #D4AF37;
+  --gold-dark: #e6c763;
+  --bg: #181818;
+  --card-bg: #232323;
+  --text-main: #fffbe7;
+  --text-secondary: #e0e0e0;
+  --shadow: 0 2px 12px rgba(212, 175, 55, 0.18);
+}
+
+body, .mo-container {
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.4s, color 0.4s;
+}
 
 .mo-container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 40px 20px 60px;
-  background: #fff;
-  color: #1A1A1A;
   font-family: 'Inter', 'Open Sans', sans-serif;
 }
 
 .mo-title {
   text-align: center;
   font-family: 'Montserrat', 'Poppins', sans-serif;
-  color: #D4AF37;
+  color: var(--gold);
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 32px;
   letter-spacing: 1px;
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.7s, transform 0.7s;
+  transition: opacity 0.7s, transform 0.7s, color 0.4s;
 }
 
 .animate-on-scroll.visible.mo-title {
@@ -39,17 +61,18 @@
   flex: 1 1 260px;
   min-width: 260px;
   max-width: 340px;
-  background: #fffbe7;
-  border-left: 5px solid #D4AF37;
+  background: var(--card-bg);
+  border-left: 5px solid var(--gold);
   border-radius: 12px;
   padding: 28px 22px 22px;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+  box-shadow: var(--shadow);
   display: flex;
   gap: 18px;
   align-items: flex-start;
-  transition: box-shadow 0.2s, transform 0.3s, opacity 0.7s;
+  transition: box-shadow 0.2s, transform 0.3s, opacity 0.7s, background 0.4s, color 0.4s;
   opacity: 0;
   transform: translateY(30px);
+  color: var(--text-main);
 }
 
 .mo-point.visible {
@@ -63,7 +86,7 @@
 }
 
 .mo-icon {
-  stroke: #D4AF37;
+  stroke: var(--gold);
   width: 44px;
   height: 44px;
   flex-shrink: 0;
@@ -79,16 +102,18 @@
 
 .mo-point h2 {
   font-family: 'Montserrat', 'Poppins', sans-serif;
-  color: #1A1A1A;
+  color: var(--text-main);
   font-size: 1.1rem;
   font-weight: 700;
   margin-bottom: 7px;
   letter-spacing: 0.5px;
+  transition: color 0.4s;
 }
 
 .mo-point p {
   font-size: 1.01rem;
-  color: #333;
+  color: var(--text-secondary);
+  transition: color 0.4s;
 }
 
 .mo-cta {
@@ -98,23 +123,24 @@
 }
 
 .btn {
-  background-color: #D4AF37;
+  background-color: var(--gold);
   border: none;
-  color: #1A1A1A;
+  color: var(--text-main);
   font-weight: 700;
   padding: 12px 30px;
   border-radius: 4px;
   cursor: pointer;
   font-family: 'Montserrat', 'Poppins', sans-serif;
-  transition: background-color 0.3s, box-shadow 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.09);
   opacity: 0;
   animation: fadeInUp 0.8s forwards;
 }
 
 .btn.gold:hover {
-  background-color: #b5942f;
+  background-color: var(--gold-dark);
   box-shadow: 0 8px 25px rgba(212, 175, 55, 0.13);
+  color: var(--bg);
 }
 
 @keyframes fadeInUp {
@@ -129,6 +155,34 @@
 .fade-in.delay-3 { animation-delay: 0.3s; }
 .fade-in.delay-4 { animation-delay: 0.4s; }
 .fade-in.delay-5 { animation-delay: 0.5s; }
+
+/* Full-width images for Market Opportunity */
+.mo-gallery-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1;
+}
+
+.mo-gallery-img {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 
 @media (max-width: 900px) {
   .mo-points {

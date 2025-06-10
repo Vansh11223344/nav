@@ -52,7 +52,7 @@ const Service = () => {
     <div className="service-container">
       <h1 className="service-title animate-on-scroll">Our Services</h1>
       <section className="services-offered">
-        {services.map((service, idx) => (
+        {services.slice(0, 4).map((service, idx) => (
           <div className={`service-card animate-on-scroll fade-in delay-${idx}`} key={idx} role="region" aria-label={service.name}>
             <Settings className="service-icon gold pulse" />
             <h2>{service.name}</h2>
@@ -62,7 +62,41 @@ const Service = () => {
         ))}
       </section>
 
-      <section className="ev-tech-info animate-on-scroll fade-in delay-5">
+      <section className="services-offered">
+        {services.slice(4).map((service, idx) => (
+          <div className={`service-card animate-on-scroll fade-in delay-${idx + 6}`} key={service.name} role="region" aria-label={service.name}>
+            <Settings className="service-icon gold pulse" />
+            <h2>{service.name}</h2>
+            <p>{service.description}</p>
+            <p className="service-price">Price: {service.price}</p>
+          </div>
+        ))}
+      </section>
+
+  {/* Full-width Images after Charging Infrastructure */}
+      <div className="full-width-image-wrapper">
+        <img
+          src="./images/service1.jpeg"
+          alt="EV diagnostics in action"
+          className="full-width-image animate-on-scroll fade-in delay-4"
+          loading="lazy"
+        />
+          <img
+          src="./images/service2.jpeg"
+          alt="Smart battery parts"
+          className="full-width-image animate-on-scroll fade-in delay-5"
+          loading="lazy"
+        />
+        <img
+          src="./images/service4.jpeg"
+          alt="Smart charging hub"
+          className="full-width-image animate-on-scroll fade-in delay-5"
+          loading="lazy"
+        />
+       
+      </div>
+
+      <section className="ev-tech-info animate-on-scroll fade-in delay-8">
         <div className="ev-tech-header">
           <Info className="info-icon gold pulse" />
           <h2>About EV Technology</h2>

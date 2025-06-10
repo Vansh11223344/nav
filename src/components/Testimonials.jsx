@@ -77,6 +77,27 @@ const Testimonials = () => {
           </div>
         ))}
       </div>
+      {/* Full-width images */}
+      <div className="testimonials-gallery-wrapper">
+        <img
+          src="./images/test1.jpeg"
+          alt="Technician using EV diagnostic tool"
+          className="testimonials-gallery-img"
+          loading="lazy"
+        />
+        <img
+          src="./images/test2.jpeg"
+          alt="Fleet operator with EV"
+          className="testimonials-gallery-img"
+          loading="lazy"
+        />
+        <img
+          src="./images/test3.jpeg"
+          alt="Mechanic skilling session"
+          className="testimonials-gallery-img"
+          loading="lazy"
+        />
+      </div>
     </div>
   );
 };

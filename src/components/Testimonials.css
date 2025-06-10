@@ -1,3 +1,46 @@
+:root {
+  --gold: #D4AF37;
+  --gold-dark: #b5942f;
+  --bg: #fff;
+  --card-bg: #fffbe7;
+  --text-main: #1A1A1A;
+  --text-secondary: #444;
+  --shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
+}
+
+.dark {
+  --gold: #D4AF37;
+  --gold-dark: #e6c763;
+  --bg: #181818;
+  --card-bg: #232323;
+  --text-main: #fffbe7;
+  --text-secondary: #e0e0e0;
+  --shadow: 0 2px 12px rgba(212, 175, 55, 0.18);
+}
+
+body, .testimonials-container {
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.4s, color 0.4s;
+}
+
+.testimonials-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+  font-family: 'Inter', 'Open Sans', sans-serif;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-family: 'Montserrat', 'Poppins', sans-serif;
+  color: var(--gold);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  transition: color 0.4s;
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(35px);}
   to { opacity: 1; transform: translateY(0);}
@@ -42,7 +85,7 @@
 blockquote {
   font-size: 1.25rem;
   font-weight: bold;
-  color: #1A1A1A;
+  color: var(--text-main);
   font-style: italic;
   margin: 0 auto 0.5em;
   max-width: 700px;
@@ -52,7 +95,7 @@ blockquote {
 }
 
 .quote-mark {
-  color: #D4AF37;
+  color: var(--gold);
   font-size: 2.2rem;
   font-weight: 700;
   vertical-align: top;
@@ -63,7 +106,7 @@ blockquote {
 
 .quote-author {
   display: block;
-  color: #D4AF37;
+  color: var(--gold);
   font-size: 1rem;
   margin-top: 8px;
   font-weight: 600;
@@ -80,14 +123,14 @@ blockquote {
   width: 11px;
   height: 11px;
   border-radius: 50%;
-  background: #fffbe7;
-  border: 2px solid #D4AF37;
+  background: var(--card-bg);
+  border: 2px solid var(--gold);
   cursor: pointer;
   transition: background 0.2s, transform 0.2s;
 }
 
 .dot.active {
-  background: #D4AF37;
+  background: var(--gold);
   transform: scale(1.2);
 }
 
@@ -100,16 +143,16 @@ blockquote {
 }
 
 .metric {
-  background: #fffbe7;
+  background: var(--card-bg);
   border-radius: 8px;
   padding: 16px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-width: 150px;
-  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.08);
-  border-left: 4px solid #D4AF37;
-  transition: box-shadow 0.3s, transform 0.3s;
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--gold);
+  transition: box-shadow 0.3s, transform 0.3s, background 0.4s;
 }
 
 .metric:hover {
@@ -118,24 +161,53 @@ blockquote {
 }
 
 .metric-icon {
-  stroke: #D4AF37;
+  stroke: var(--gold);
   width: 28px;
   height: 28px;
   margin-bottom: 4px;
 }
 
 .metric-value {
-  color: #D4AF37;
+  color: var(--gold);
   font-size: 1.7rem;
   font-weight: 700;
 }
 
 .metric-label {
   font-size: 1rem;
-  color: #1A1A1A;
+  color: var(--text-main);
   margin-top: 4px;
   text-align: center;
+  transition: color 0.4s;
 }
+
+/* Full-width images for Testimonials */
+.testimonials-gallery-wrapper {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 36px;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  z-index: 1;
+}
+
+.testimonials-gallery-img {
+  width: 100vw;
+  max-width: 100vw;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 
 @media (max-width: 600px) {
   .testimonials-container {

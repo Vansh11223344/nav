@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import {
-  Cpu,
-  CloudOff,
-  Activity,
-  Wifi,
-  Zap,
-  Layers,
-  X,
-  Download
+import { 
+  Cpu, 
+  CloudOff, 
+  Activity, 
+  Wifi, 
+  Zap, 
+  Layers, 
+  X, 
+  Download 
 } from 'react-feather';
+import { useNavigate } from 'react-router-dom'; // <-- Import useNavigate
 import html2pdf from 'html2pdf.js';
 import './TechInnovation.css';
 
@@ -62,6 +63,7 @@ const whitePaperContent = [
 const TechInnovation = () => {
   const [showWhitePaper, setShowWhitePaper] = React.useState(false);
   const whitePaperRef = useRef(null);
+  const navigate = useNavigate(); // <-- Initialize navigate
 
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
@@ -115,8 +117,32 @@ const TechInnovation = () => {
         </p>
       </section>
 
+      {/* Tech Gallery Section with Full-width Images */}
+      <section className="tech-gallery-section animate-on-scroll fade-in delay-6">
+        <div className="tech-gallery-wrapper">
+          <img
+            src="./images/tech1.jpeg"
+            alt="Edge AI module"
+            className="tech-gallery-img"
+            loading="lazy"
+          />
+          <img
+            src="./images/tech2.jpeg"
+            alt="Rural EV skilling session"
+            className="tech-gallery-img"
+            loading="lazy"
+          />
+          <img
+            src="./images/tech3.jpeg"
+            alt="Diagnostics in the field"
+            className="tech-gallery-img"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
       {/* White Paper Section */}
-      <div className={`white-paper-viewer animate-on-scroll fade-in delay-6 ${showWhitePaper ? 'active' : ''}`}>
+      <div className={`white-paper-viewer animate-on-scroll fade-in delay-7 ${showWhitePaper ? 'active' : ''}`}>
         {showWhitePaper ? (
           <div id="white-paper-content" className="white-paper-content" ref={whitePaperRef}>
             <button 
@@ -147,21 +173,26 @@ const TechInnovation = () => {
             </div>
           </div>
         ) : (
-          <div className="diagram-placeholder animate-on-scroll fade-in delay-7">
+          <div className="diagram-placeholder animate-on-scroll fade-in delay-8">
             [Clean line diagrams of architecture and data flow]
           </div>
         )}
       </div>
 
       {/* CTA */}
-      <div className="tech-cta animate-on-scroll fade-in delay-8">
+      <div className="tech-cta animate-on-scroll fade-in delay-9">
         <button 
           className="btn gold" 
           onClick={() => setShowWhitePaper(true)}
         >
           View White Paper
         </button>
-        <button className="btn gold">Schedule Tech Demo</button>
+        <button 
+          className="btn gold"
+          onClick={() => navigate('/contact')}
+        >
+          Schedule Tech Demo
+        </button>
       </div>
     </div>
   );

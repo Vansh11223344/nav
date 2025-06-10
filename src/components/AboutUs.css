@@ -1,11 +1,28 @@
-/* AboutUs.css - Ultra Animated */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
 
 :root {
   --gold: #D4AF37;
+  --gold-light: #f1c40f;
   --dark: #1A1A1A;
   --light: #f9f9f9;
+  --bg: #fff;
+  --text-main: #1A1A1A;
+  --text-secondary: #444;
+  --card-bg: #fff;
+  --shadow: 0 10px 30px rgba(0,0,0,0.05);
   --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --gold: #D4AF37;
+  --gold-light: #f1c40f;
+  --dark: #fffbe7;
+  --light: #232323;
+  --bg: #181818;
+  --text-main: #fffbe7;
+  --text-secondary: #e0e0e0;
+  --card-bg: #232323;
+  --shadow: 0 10px 30px rgba(212, 175, 55, 0.10);
 }
 
 .aboutus-container {
@@ -15,6 +32,9 @@
   font-family: 'Inter', sans-serif;
   opacity: 0;
   animation: fadeIn 1s 0.2s ease-out forwards;
+  background: var(--bg);
+  color: var(--text-main);
+  transition: background 0.4s, color 0.4s;
 }
 
 @keyframes fadeIn {
@@ -25,6 +45,8 @@ section {
   margin-bottom: 80px;
   position: relative;
   overflow: hidden;
+  background: none;
+  transition: background 0.4s;
 }
 
 h2 {
@@ -34,7 +56,7 @@ h2 {
   margin-bottom: 30px;
   position: relative;
   display: inline-block;
-  background: linear-gradient(90deg, var(--gold), #f1c40f);
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -57,7 +79,7 @@ h2::after {
   left: 0;
   width: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--gold), #f1c40f);
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
   transition: var(--transition);
 }
 
@@ -71,16 +93,22 @@ h3 {
   font-size: 1.5rem;
   margin-bottom: 15px;
   color: var(--dark);
+  transition: color 0.4s;
+}
+
+.dark h3 {
+  color: var(--gold-light);
 }
 
 p {
   font-size: 1.15rem;
   line-height: 1.8;
-  color: #444;
+  color: var(--text-secondary);
   margin-bottom: 20px;
   opacity: 0;
   transform: translateY(20px);
   animation: textReveal 0.8s 0.6s ease-out forwards;
+  transition: color 0.4s;
 }
 
 @keyframes textReveal {
@@ -99,14 +127,15 @@ p {
 }
 
 .mission, .vision {
-  background: white;
+  background: var(--card-bg);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow);
   transform-style: preserve-3d;
   transform: rotateY(15deg);
   opacity: 0;
   animation: cardRotate 1s 0.5s ease-out forwards;
+  transition: background 0.4s;
 }
 
 @keyframes cardRotate {
@@ -118,13 +147,14 @@ p {
 
 /* History */
 .history {
-  background: linear-gradient(135deg, #f5f5f5 0%, white 100%);
+  background: linear-gradient(135deg, var(--light) 0%, var(--card-bg) 100%);
   padding: 50px;
   border-radius: 16px;
   clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
   transform: scale(0.95);
   opacity: 0;
   animation: scaleUp 0.8s 0.7s ease-out forwards;
+  transition: background 0.4s;
 }
 
 @keyframes scaleUp {
@@ -168,7 +198,7 @@ p {
 }
 
 .leader-card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 16px;
   padding: 40px 30px;
   box-shadow: 0 15px 40px rgba(212, 175, 55, 0.1);
@@ -199,7 +229,7 @@ p {
   height: 150px;
   object-fit: cover;
   border-radius: 50%;
-  border: 5px solid white;
+  border: 5px solid var(--card-bg);
   margin: 0 auto 25px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   filter: grayscale(20%);
@@ -223,13 +253,14 @@ p {
 
 /* Why Exist */
 .why-exist {
-  background: white;
+  background: var(--card-bg);
   padding: 60px;
   border-radius: 16px;
   box-shadow: 0 20px 60px rgba(212, 175, 55, 0.1);
   position: relative;
   opacity: 0;
   animation: fadeIn 0.8s 1.6s ease-out forwards;
+  transition: background 0.4s;
 }
 
 .why-exist::before {
@@ -239,7 +270,7 @@ p {
   left: 0;
   width: 6px;
   height: 100%;
-  background: linear-gradient(to bottom, var(--gold), #f1c40f);
+  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
   animation: growHeight 1s 1.7s ease-out forwards;
   transform-origin: top;
   transform: scaleY(0);

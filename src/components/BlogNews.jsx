@@ -38,6 +38,9 @@ const initialArticles = [
 
 const categories = ["All", "EV Policy", "Rural Tech", "Navyug Updates", "DIY Skilling"];
 
+const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL;
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+
 const BlogNews = () => {
   const [articles, setArticles] = useState(initialArticles);
   const [filter, setFilter] = useState('All');
@@ -49,6 +52,11 @@ const BlogNews = () => {
     date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
   });
   const [isAdding, setIsAdding] = useState(false);
+
+  // Auth state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [login, setLogin] = useState({ email: '', password: '' });
+  const [loginError, setLoginError] = useState('');
 
   const filteredArticles = filter === 'All' 
     ? articles 
@@ -96,6 +104,25 @@ const BlogNews = () => {
         behavior: 'smooth'
       });
     }, 800);
+  };
+
+  // Login logic
+  const handleLoginChange = (e) => {
+    const { name, value } = e.target;
+    setLogin(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (
+      login.email.trim().toLowerCase() === ADMIN_EMAIL &&
+      login.password === ADMIN_PASSWORD
+    ) {
+      setIsAuthenticated(true);
+      setLoginError('');
+    } else {
+      setLoginError('Invalid email or password.');
+    }
   };
 
   useEffect(() => {
@@ -161,60 +188,113 @@ const BlogNews = () => {
         )}
       </section>
 
+      {/* Full-width videos */}
+      <div className="blognews-videos-wrapper">
+        <video
+          className="blognews-video"
+          src="./videos/blogclip1.mp4"
+          controls
+          loop
+          poster="./images/test2.jpeg"
+        >
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+        <video
+          className="blognews-video"
+          src="./videos/blogclip2.mp4"
+          controls
+          loop
+          poster="./images/test1.jpeg"
+        >
+          Sorry, your browser doesn't support embedded videos.
+        </video>
+      </div>
+
       <section className="add-article">
         <h2>Share Your Story</h2>
-        <form onSubmit={handleAddArticle}>
-          <label>
-            Title
-            <input
-              type="text"
-              name="title"
-              value={form.title}
-              onChange={handleInputChange}
-              required
-              placeholder="Enter article title"
-            />
-          </label>
-          <label>
-            Category
-            <select 
-              name="category" 
-              value={form.category} 
-              onChange={handleInputChange}
+        {!isAuthenticated ? (
+          <form className="login-form" onSubmit={handleLogin}>
+            <label>
+              Email
+              <input
+                type="email"
+                name="email"
+                value={login.email}
+                onChange={handleLoginChange}
+                required
+                placeholder="Enter admin email"
+                autoComplete="username"
+              />
+            </label>
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                value={login.password}
+                onChange={handleLoginChange}
+                required
+                placeholder="Enter password"
+                autoComplete="current-password"
+              />
+            </label>
+            {loginError && <div className="login-error">{loginError}</div>}
+            <button type="submit" className="btn active">Login to Publish</button>
+          </form>
+        ) : (
+          <form onSubmit={handleAddArticle}>
+            <label>
+              Title
+              <input
+                type="text"
+                name="title"
+                value={form.title}
+                onChange={handleInputChange}
+                required
+                placeholder="Enter article title"
+              />
+            </label>
+            <label>
+              Category
+              <select 
+                name="category" 
+                value={form.category} 
+                onChange={handleInputChange}
+              >
+                {categories.filter(c => c !== 'All').map(cat => (
+                  <option key={cat} value={cat}>{cat}</option>
+                ))}
+              </select>
+            </label>
+            <label>
+              Content
+              <textarea
+                name="content"
+                value={form.content}
+                onChange={handleInputChange}
+                rows={6}
+                required
+                placeholder="Write your article content here..."
+              />
+            </label>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                name="featured"
+                checked={form.featured}
+                onChange={handleInputChange}
+              />
+              Mark as Featured Story
+            </label>
+            <button 
+              type="submit" 
+              className="btn active"
+              disabled={isAdding}
             >
-              {categories.filter(c => c !== 'All').map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-          </label>
-          <label>
-            Content
-            <textarea
-              name="content"
-              value={form.content}
-              onChange={handleInputChange}
-              rows={6}
-              required
-              placeholder="Write your article content here..."
-            />
-          </label>
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              name="featured"
-              checked={form.featured}
-              onChange={handleInputChange}
-            />
-            Mark as Featured Story
-          </label>
-          <button 
-            type="submit" 
-            className="btn active"
-            disabled={isAdding}
-          >
-            {isAdding ? 'Publishing...' : 'Publish Article'}
-          </button>
-        </form>
+              {isAdding ? 'Publishing...' : 'Publish Article'}
+            </button>
+          </form>
+        )}
       </section>
     </div>
   );

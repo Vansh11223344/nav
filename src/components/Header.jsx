@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Menu, X } from 'react-feather';
+import { Menu, X, Moon, Sun } from 'react-feather';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
 
@@ -17,6 +17,9 @@ const navLinks = [
 
 const Header = ({ menuOpen, setMenuOpen }) => {
   const location = useLocation();
+  const [darkMode, setDarkMode] = React.useState(() =>
+    localStorage.getItem('theme') === 'dark'
+  );
 
   useEffect(() => {
     if (menuOpen) {
@@ -26,11 +29,31 @@ const Header = ({ menuOpen, setMenuOpen }) => {
     }
   }, [menuOpen]);
 
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+
+  const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
     <header className="header">
-      <div className="logo hover-scale">NAVYUG</div>
+      {/* Logo on the left side */}
+      <div className="header-logo-container">
+        <div className="header-logo-img">
+          <img src="/images/companyimg.jpeg" alt="Company Logo" />
+        </div>
+        <div className="logo hover-scale">NAVYUG</div>
+      </div>
+
+      {/* Navigation links */}
       <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
         {navLinks.map((link, index) => (
           <Link
@@ -45,13 +68,24 @@ const Header = ({ menuOpen, setMenuOpen }) => {
           </Link>
         ))}
       </nav>
-      <button 
-        className={`menu-toggle ${menuOpen ? 'open' : ''}`} 
-        onClick={toggleMenu} 
-        aria-label="Toggle menu"
-      >
-        {menuOpen ? <X className="icon-close" /> : <Menu className="icon-menu" />}
-      </button>
+
+      {/* Dark mode toggle and Hamburger menu */}
+      <div className="header-actions">
+        <button
+          className="dark-toggle"
+          onClick={toggleDarkMode}
+          aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+        </button>
+        <button
+          className={`menu-toggle ${menuOpen ? 'open' : ''}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X className="icon-close" /> : <Menu className="icon-menu" />}
+        </button>
+      </div>
     </header>
   );
 };

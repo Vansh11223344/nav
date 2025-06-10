@@ -34,20 +34,18 @@ const ContactUs = () => {
     newsletter: false
   });
 
-useEffect(() => {
-  const observer = new window.IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
+  useEffect(() => {
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-  return () => observer.disconnect();
-}, []);
-
-
+    document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = e => {
     const { name, value, type, checked } = e.target;

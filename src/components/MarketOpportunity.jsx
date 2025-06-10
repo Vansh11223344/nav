@@ -65,6 +65,23 @@ const MarketOpportunity = () => {
           </div>
         ))}
       </div>
+
+      {/* Full-width images */}
+      <div className="mo-gallery-wrapper">
+        <img
+          src="./images/market1.jpeg"
+          alt="EV market growth"
+          className="mo-gallery-img"
+          loading="lazy"
+        />
+        <img
+          src="./images/market2.jpeg"
+          alt="Rural EV diagnostics"
+          className="mo-gallery-img"
+          loading="lazy"
+        />
+      </div>
+
       <div className="mo-cta">
         <button className="btn gold fade-in delay-5">Talk to our team</button>
       </div>

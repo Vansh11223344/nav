@@ -25,6 +25,15 @@ const futureVisionPoints = [
   "Integration with charging & battery swap stations"
 ];
 
+// Your EV images (update paths as needed)
+const evImages = [
+  '/images/ev1.jpeg',
+  '/images/ev2.jpeg',
+  '/images/ev3.jpeg',
+  '/images/ev4.jpeg',
+  '/images/ev5.jpeg'
+];
+
 const Home = () => {
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const navigate = useNavigate();
@@ -34,6 +43,19 @@ const Home = () => {
       setTestimonialIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 4000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    // Animate in gallery images on scroll
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.ev-gallery-img').forEach(el => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -74,6 +96,20 @@ const Home = () => {
           <Layers className="icon gold" />
           <h3>Scalable</h3>
           <p>Grows with your business needs.</p>
+        </div>
+      </section>
+
+      {/* EV Gallery Section */}
+      <section className="ev-gallery-section">
+        <div className="ev-gallery">
+          {evImages.map((src, idx) => (
+            <img
+              className={`ev-gallery-img fade-in delay-${idx}`}
+              src={src}
+              alt={`EV ${idx + 1}`}
+              key={src}
+            />
+          ))}
         </div>
       </section>
 
@@ -149,8 +185,8 @@ const Home = () => {
       <footer className="footer">
         <div className="social-contact">
           <a href="/contact">Contact</a>
-         <a href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA==" target="_blank" rel="noopener noreferrer">Instagram</a>
-         <a href="https://www.linkedin.com/in/navyug-innovation-842b85368?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA==" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
         <div className="copyright">
           © {new Date().getFullYear()} EV Bharat. All rights reserved.
