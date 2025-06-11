@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Zap, Send, MessageCircle } from 'react-feather';
+import { useNavigate } from 'react-router-dom';
+
 import './Chatbot.css';
 
 const FAQ = [
@@ -263,6 +265,8 @@ const Chatbot = () => {
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
 
+  const navigate = useNavigate(); // <-- Add this
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -289,46 +293,54 @@ const Chatbot = () => {
   };
 
   return (
-  <div className="chatbot-container">
-  <header className="chatbot-header">
-    <Zap className="brand-icon" />
-    <span>Navyug EV Chatbot</span>
-  </header>
-  <div className="chat-window" role="log" aria-live="polite">
-    {messages.map((msg, idx) => (
-      <div
-        key={idx}
-        className={`chat-message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
-        aria-label={`${msg.sender === 'user' ? 'You' : 'Bot'}: ${msg.text}`}
+    <div className="chatbot-container">
+      <header className="chatbot-header">
+        <Zap className="brand-icon" />
+        <span>Navyug EV Chatbot</span>
+      </header>
+      <div className="chat-window" role="log" aria-live="polite">
+        {messages.map((msg, idx) => (
+          <div
+            key={idx}
+            className={`chat-message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
+            aria-label={`${msg.sender === 'user' ? 'You' : 'Bot'}: ${msg.text}`}
+          >
+            {msg.sender === 'bot' && <MessageCircle className="avatar bot-avatar" />}
+            {msg.sender === 'user' && <div className="avatar user-avatar">You</div>}
+            <span className="msg-text">{msg.text}</span>
+          </div>
+        ))}
+        {isTyping && (
+          <div className="chat-message bot-message typing-indicator">
+            <MessageCircle className="avatar bot-avatar" />
+            <span className="msg-text">Typing...</span>
+          </div>
+        )}
+        <div ref={chatEndRef} />
+      </div>
+      <form className="chat-input-area" onSubmit={e => { e.preventDefault(); handleSend(); }}>
+        <textarea
+          className="chat-input"
+          value={input}
+          onChange={e => setInput(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Type your message..."
+          aria-label="Chat input"
+          rows={3}
+        />
+        <button className="send-button" type="submit" aria-label="Send message">
+          <Send size={20} />
+        </button>
+      </form>
+      <button
+        className="btn gold"
+        style={{ margin: '24px auto', display: 'block' }}
+        onClick={() => navigate('/')}
       >
-        {msg.sender === 'bot' && <MessageCircle className="avatar bot-avatar" />}
-        {msg.sender === 'user' && <div className="avatar user-avatar">You</div>}
-        <span className="msg-text">{msg.text}</span>
-      </div>
-    ))}
-    {isTyping && (
-      <div className="chat-message bot-message typing-indicator">
-        <MessageCircle className="avatar bot-avatar" />
-        <span className="msg-text">Typing...</span> {/* Fixed this line */}
-      </div>
-    )}
-    <div ref={chatEndRef} />
-  </div>
-  <form className="chat-input-area" onSubmit={e => { e.preventDefault(); handleSend(); }}>
-    <textarea
-      className="chat-input"
-      value={input}
-      onChange={e => setInput(e.target.value)}
-      onKeyDown={handleKeyDown}
-      placeholder="Type your message..."
-      aria-label="Chat input"
-      rows={3}
-    />
-    <button className="send-button" type="submit" aria-label="Send message">
-      <Send size={20} />
-    </button>
-  </form>
-</div>/* Added closing tag for chatbot-container */
- )};
+        ← Back to Home
+      </button>
+    </div>
+  );
+};
 
 export default Chatbot;
