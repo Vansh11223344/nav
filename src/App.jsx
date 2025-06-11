@@ -11,12 +11,12 @@ import ContactUs from './components/ContactUs';
 import BlogNews from './components/BlogNews';
 import Chatbot from './components/Chatbot';
 import Service from './components/Service';
-
-
+import ScrollToTop from './components/ScrollToTop'; // Add this import
 
 function App() {
   return (
     <Router>
+      <ScrollToTop /> {/* Add this component */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -29,7 +29,6 @@ function App() {
           <Route path="/blog" element={<BlogNews />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/service" element={<Service />} />
-
         </Route>
       </Routes>
     </Router>

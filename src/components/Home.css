@@ -333,6 +333,10 @@ body, .home-container {
   font-style: italic;
   font-family: var(--font-primary);
   margin: 0 0 16px 0;
+   text-align: center;
+  max-width: 700px;  
+  margin-left: auto; 
+  margin-right: auto;
 }
 
 .testimonial-dots {
@@ -533,14 +537,45 @@ body, .home-container {
 .footer-social {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 10px;
   font-size: 1rem;
 }
 
 .footer-social a {
   color: var(--primary-color);
-  text-decoration: underline;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  transition: color 0.2s;
 }
+
+.footer-social a:hover,
+.footer-social a:focus {
+  color: #fff;
+}
+
+.footer-social-icon {
+  margin-right: 7px;
+  vertical-align: middle;
+  stroke: var(--primary-color);
+  transition: stroke 0.2s;
+}
+
+.footer-social a:hover .footer-social-icon,
+.footer-social a:focus .footer-social-icon {
+  stroke: #fff;
+}
+
+/* Dark mode: icons remain gold, text turns white on hover */
+.dark .footer-social a {
+  color: var(--primary-color);
+}
+.dark .footer-social a:hover,
+.dark .footer-social a:focus {
+  color: #fff;
+}
+
 
 .footer-nav {
   display: flex;
@@ -627,10 +662,29 @@ body, .home-container {
 @media (max-width: 700px) {
   .vision-section,
   .navyug-edge {
-    padding: 22px 8vw 18px 8vw;
+    padding: 18px 4vw 14px 4vw;
   }
+
   .vision-section h2,
   .navyug-edge h2 {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
+    margin-bottom: 10px;
+  }
+
+  .vision-section p,
+  .navyug-edge p {
+    font-size: 0.99rem;
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 400px) {
+  .vision-section h2,
+  .navyug-edge h2 {
+    font-size: 1.05rem;
+  }
+  .vision-section p,
+  .navyug-edge p {
+    font-size: 0.93rem;
   }
 }

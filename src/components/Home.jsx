@@ -9,26 +9,19 @@ const testimonials = [
   "Partnering with them has boosted our service efficiency."
 ];
 
-const futureVisionPoints = [
- "Our vision is to be the pioneer smart, data-driven EV telematics solution in India, designed for the future of electric mobility. We aspire to stand alongside the world’s leading tech innovators by connecting every electric vehicle to a unified intelligent ecosystem. Our goal is to unlock real-time insights that enhance efficiency, elevate safety, and optimize performance across the EV landscape. We aim to reinvent the way India commutes — smarter, cleaner and in tune."
-];
-
 const evImages = [
-  '/images/ev1.jpeg',
-  '/images/ev2.jpeg',
-  '/images/ev3.jpeg',
-  '/images/ev4.jpeg',
-  '/images/ev5.jpeg'
+  './images/ev1.jpeg',
+  './images/ev2.jpeg',
+  './images/ev3.jpeg',
+  './images/ev4.jpeg',
+  './images/ev5.jpeg'
 ];
 
 const sectionLinks = [
-  { to: '/about', label: 'About Us', info: 'Learn about our mission, vision, and the team behind Navyug.' },
-  { to: '/blog', label: 'Blog & News', info: 'Latest updates, policy news, and rural EV stories.' },
-  { to: '/contact', label: 'Contact Us', info: 'Get in touch for queries, support, or partnership.' },
-  { to: '/market', label: 'Market Opportunity', info: 'Discover the untapped potential of Bharat’s EV sector.' },
-  { to: '/ourwork', label: 'Our Work', info: 'Explore our projects, deployments, and impact.' },
+  { to: '/market-opportunity', label: 'Market Opportunity', info: 'Discover the untapped potential of Bharat’s EV sector.' },
+  { to: '/what-we-do', label: 'Our Work', info: 'Explore our projects, deployments, and impact.' },
   { to: '/service', label: 'Service', info: 'See our service offerings for diagnostics, charging, and skilling.' },
-  { to: '/tech', label: 'Tech Innovation', info: 'Dive into our deep-tech stack and patent-pending solutions.' },
+  { to: '/technology', label: 'Tech Innovation', info: 'Dive into our deep-tech stack and patent-pending solutions.' },
   { to: '/testimonials', label: 'Testimonials', info: 'Hear from our customers, partners, and trainees.' }
 ];
 
@@ -72,10 +65,7 @@ const Home = () => {
       <section className="navyug-edge">
         <h2>The Navyug Edge</h2>
         <p>
-          We provide intelligent diagnostic solutions purpose-built for electric vehicles,
-          empowering efficient maintenance and proactive service for EV users. Driven by a commitment to safety
-          and sustainability, our technology supports a safer, cleaner and eco-friendly future through smarter,
-          greener mobility.
+         "We deliver intelligent diagnostic solutions engineered specifically for electric vehicles, enabling proactive maintenance and optimized performance to enhance the reliability and experience of EV ownership. Driven by a commitment to safety and sustainability, our technology supports a safer, cleaner and eco-friendly future through smarter, greener mobility."
         </p>
       </section>
 
@@ -118,17 +108,12 @@ const Home = () => {
         </p>
       </section>
 
-      {/* Future Vision */}
-      <section className="future-vision">
-        <div className="future-header">
-          <Zap className="future-icon" />
-          <h2>&nbsp; &nbsp; &nbsp;&nbsp;Our Vision</h2>
-        </div>
-        <ul className="future-list">
-          {futureVisionPoints.map((point, idx) => (
-            <li key={idx}>{point}</li>
-          ))}
-        </ul>
+      {/* Our Vision */}
+       <section className="vision-section">
+        <h2>Our Vision</h2>
+        <p>
+         Our vision is to be the pioneer smart, data-driven EV telematics solution in India, designed for the future of electric mobility. We aspire to stand alongside the world’s leading tech innovators by connecting every electric vehicle to a unified intelligent ecosystem. Our goal is to unlock real-time insights that enhance efficiency, elevate safety, and optimize performance across the EV landscape. We aim to reinvent the way India commutes — smarter, cleaner and in tune.
+        </p>
       </section>
 
       {/* Testimonials */}
@@ -183,16 +168,56 @@ const Home = () => {
             <div><strong>Email:</strong> <a href="mailto:navyuginnovation@gmail.com">navyuginnovation@gmail.com</a></div>
             <div><strong>Address:</strong>Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand</div>
           </div>
-          <div className="footer-social">
-            <a href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA==" target="_blank" rel="noopener noreferrer">Instagram</a>
-            <a href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
+         <div className="footer-social">
+  <a
+    href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA=="
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Instagram"
+  >
+    <svg className="footer-social-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+      style={{ verticalAlign: 'middle', marginRight: 7 }}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+    </svg>
+    Instagram
+  </a>
+  <a
+  href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="LinkedIn"
+>
+  <svg
+    className="footer-social-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    width="22"
+    height="22"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    style={{ verticalAlign: 'middle', marginRight: 7 }}
+  >
+    <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 
+    0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.27c-.97 
+    0-1.75-.79-1.75-1.76s.78-1.76 
+    1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 11.27h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 
+    0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.88v1.36h.04c.4-.76 
+    1.38-1.56 2.85-1.56 3.05 0 3.62 2.01 
+    3.62 4.62v5.58z" />
+  </svg>
+    LinkedIn
+  </a>
+</div>
+
         </div>
-        <div className="footer-nav">
-          {sectionLinks.map((link) => (
-            <Link to={link.to} key={link.to}>{link.label}</Link>
-          ))}
-        </div>
+       <div className="footer-nav">
+  <Link to="/contact">Contact Us</Link>
+  <Link to="/about">About Us</Link>
+  <Link to="/blog">Blog & News</Link>
+</div>
+
         <div className="copyright">
           © {new Date().getFullYear()} Motoget Navyug Innovations Pvt Ltd. All rights reserved.
         </div>
