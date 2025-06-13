@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Cpu,
   Tool,
@@ -56,7 +56,32 @@ const chargingInfra = [
   "Support for universal charging interfaces and DC fast-charging protocols"
 ];
 
+const images = [
+  {
+    src: "./images/ourwork1.jpeg",
+    alt: "EV diagnostic in action"
+  },
+  {
+    src: "./images/ourwork2.jpeg",
+    alt: "Smart charging hub"
+  }
+];
+
 const OurWork = () => {
+  // Carousel state
+  const [current, setCurrent] = useState(0);
+  const total = images.length;
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % total);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + total) % total);
+
+  // Optional: Auto-play
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [current]);
+
+  // Animate on scroll
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -72,35 +97,39 @@ const OurWork = () => {
 
   return (
     <div className="ourwork-container">
-      <h1 className="work-title animate-on-scroll">What We Do: Powering Bharat’s EV Value Chain</h1>
-      <div className="modules-visual animate-on-scroll">
-        <Layers className="modular-visual" />
-        <span className="modular-label">Modular, Scalable, Rural-Ready</span>
-      </div>
+      <h1 className="work-title animate-on-scroll">What We Do</h1>
+      
+      {/* Normal Text Section */}
+      <section className="normal-text-section animate-on-scroll fade-in delay-0">
+        <p>
+         Motoget Navyug Innovations is a one-stop solution for electric vehicle servicing and diagnostics. As EV adoption is often hindered by inadequate maintenance support, we’re bridging this gap by deploying a network of smart service stations powered by deep-tech solutions—ensuring reliable, accessible, and scalable EV care across India.
+        </p>
+      </section>
 
-      {/* Vehicle Portfolio & Key Specs */}
-      <section className="vehicle-specs-section animate-on-scroll">
+      <div className="modules-visual animate-on-scroll"></div>
+
+      {/* Vehicle Portfolio */}
+      <section className="vehicle-portfolio-section animate-on-scroll">
         <h2>
-          <Cpu className="section-icon" /> Vehicle Portfolio & Key Specs – Telematics Platform
+          <Cpu className="section-icon" /> Vehicle Portfolio
         </h2>
-        <div className="vehicle-specs-content">
-          <div className="vehicle-types fade-in delay-0">
-            <h3>Supported Vehicles:</h3>
-            <ul>
-              {vehicleTypes.map((type, idx) => (
-                <li key={idx}><CheckCircle className="check-icon" /> {type}</li>
-              ))}
-            </ul>
-          </div>
-          <div className="key-features fade-in delay-1">
-            <h3>Key Features:</h3>
-            <ul>
-              {keyFeatures.map((feature, idx) => (
-                <li key={idx}><CheckCircle className="check-icon" /> {feature}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <ul className="vehicle-types-list fade-in delay-0">
+          {vehicleTypes.map((type, idx) => (
+            <li key={idx}><CheckCircle className="check-icon" /> {type}</li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Key Specs */}
+      <section className="key-specs-section animate-on-scroll">
+        <h2>
+          <Layers className="section-icon" /> Key Specs – Telematics Platform
+        </h2>
+        <ul className="key-features-list fade-in delay-1">
+          {keyFeatures.map((feature, idx) => (
+            <li key={idx}><CheckCircle className="check-icon" /> {feature}</li>
+          ))}
+        </ul>
       </section>
 
       {/* Charging Infrastructure */}
@@ -115,23 +144,27 @@ const OurWork = () => {
         </ul>
       </section>
 
-      {/* Full-width Images */}
-      <div className="full-width-image-wrapper">
+      {/* Carousel Images */}
+      <div className="carousel-wrapper animate-on-scroll fade-in delay-3">
         <img
-          src="./images/ourwork1.jpeg"
-          alt="EV diagnostic in action"
-          className="full-width-image animate-on-scroll fade-in delay-3"
+          src={images[current].src}
+          alt={images[current].alt}
+          className="carousel-image"
           loading="lazy"
         />
-        <img
-          src="./images/ourwork2.jpeg"
-          alt="Smart charging hub"
-          className="full-width-image animate-on-scroll fade-in delay-4"
-          loading="lazy"
-        />
+        <div className="carousel-dots">
+          {images.map((_, idx) => (
+            <span
+              key={idx}
+              className={`carousel-dot${idx === current ? " active" : ""}`}
+              onClick={() => setCurrent(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+            ></span>
+          ))}
+        </div>
       </div>
 
-      {/* Existing Modules */}
+      {/* Work Modules in 2x2 grid, centered */}
       <div className="work-modules">
         {modules.map((mod, idx) => (
           <div className={`work-module animate-on-scroll fade-in delay-${idx + 5}`} key={idx} role="region" aria-label={mod.title}>
@@ -140,10 +173,6 @@ const OurWork = () => {
             <p>{mod.desc}</p>
           </div>
         ))}
-      </div>
-      <div className="work-cta animate-on-scroll fade-in delay-9">
-        <button className="btn gold" aria-label="Contact us for deployment">Contact us for deployment</button>
-        <button className="btn gold" aria-label="Become a partner">Become a partner</button>
       </div>
     </div>
   );

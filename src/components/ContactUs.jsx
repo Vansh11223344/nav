@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Phone, Mail, Send } from 'react-feather';
+import { FaInstagram, FaLinkedin } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 import './ContactUs.css';
+
+// Get EmailJS IDs from environment variables
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const USER_ID = import.meta.env.VITE_EMAILJS_USER_ID;
 
 const infoBlocks = [
   {
@@ -34,6 +41,8 @@ const ContactUs = () => {
     newsletter: false
   });
 
+  const [isSending, setIsSending] = useState(false);
+
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -47,6 +56,13 @@ const ContactUs = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Optional: initialize EmailJS (not always needed, but safe)
+  useEffect(() => {
+    if (USER_ID) {
+      emailjs.init(USER_ID);
+    }
+  }, []);
+
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
     setForm(prev =>
@@ -56,21 +72,46 @@ const ContactUs = () => {
     );
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Thank you! We have received your message.');
-    setForm({
-      name: '',
-      email: '',
-      message: '',
-      type: 'General',
-      newsletter: false
-    });
+    setIsSending(true);
+
+    const templateParams = {
+      name: form.name,
+      email: form.email,
+      message: form.message,
+      type: form.type,
+      newsletter: form.newsletter ? "Yes" : "No"
+    };
+
+    emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      templateParams,
+      USER_ID
+    )
+      .then((result) => {
+        alert("Thank you! Your message has been sent.");
+        setForm({
+          name: '',
+          email: '',
+          message: '',
+          type: 'General',
+          newsletter: false
+        });
+        setIsSending(false);
+      })
+      .catch((error) => {
+        console.error('EmailJS Error:', error);
+        alert("Oops! Something went wrong. Please try again.");
+        setIsSending(false);
+      });
   };
 
   return (
     <div className="contact-container">
       <h1 className="contact-title animate-on-scroll">Contact Us</h1>
+
       <div className="contact-info-section animate-on-scroll">
         <div className="contact-info">
           {infoBlocks.map((block, idx) => (
@@ -82,7 +123,28 @@ const ContactUs = () => {
               </div>
             </div>
           ))}
+          <div className="contact-socials fade-in delay-3">
+            <a
+              href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="contact-social-link linkedin"
+            >
+              <FaLinkedin className="contact-icon pulse" />
+            </a>
+            <a
+              href="https://www.instagram.com/ng_navyug?igsh=MWtlZHZsNTY0dnRiZA=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="contact-social-link"
+            >
+              <FaInstagram className="contact-icon pulse" />
+            </a>
+          </div>
         </div>
+
         <div className="map-embed slide-in-right">
           <iframe
             title="Navyug EV Location"
@@ -93,6 +155,7 @@ const ContactUs = () => {
           ></iframe>
         </div>
       </div>
+
       <div className="contact-form-section animate-on-scroll">
         <form className="contact-form" onSubmit={handleSubmit}>
           <label className="fade-in">
@@ -148,8 +211,8 @@ const ContactUs = () => {
               Sign me up for updates and insights
             </label>
           </div>
-          <button className="btn gold fade-in delay-5" type="submit">
-            <Send className="send-icon" /> Send Message
+          <button className="btn gold fade-in delay-5" type="submit" disabled={isSending}>
+            <Send className="send-icon" /> {isSending ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>

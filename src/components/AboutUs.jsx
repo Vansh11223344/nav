@@ -44,33 +44,32 @@ const AboutUs = () => {
     <div className="aboutus-container">
       {/* Mission & Vision */}
       <section className="mission-vision">
+        <div className="vision">
+          <h2>Who We Are</h2>
+          <p>
+          Motoget Navyug Innovations Pvt. Ltd. is at the forefront of India's electric mobility transformation. We are developing the nation’s first OEM-ready telematics and battery intelligence platform—engineered to provide secure, scalable, and data-driven solutions tailored for electric vehicles
+          </p>
+        </div>
         <div className="mission">
           <h2>Our Mission</h2>
           <p>
-            To make electric vehicle diagnostics, servicing, and safety accessible to every corner of Bharat through deep-tech innovation, decentralized infrastructure, and skilled rural workforce development.
+           Our mission is to transform India’s electric vehicle ecosystem through cutting-edge telematics solutions. By delivering real-time battery monitoring, predictive maintenance capabilities, and smart fleet management tools, we aim to empower OEMs, fleet operators, and battery partners with the intelligence they need to operate efficiently and reliably.
           </p>
         </div>
         <div className="vision">
           <h2>Our Vision</h2>
           <p>
-            To become India's leading EV servicing backbone by integrating real-time analytics, grassroots service hubs, and smart diagnostics across the 2W and 3W ecosystem.
-          </p>
+          To be India’s leading smart EV telematics and service platform, connecting every electric vehicle to a unified ecosystem that enables real-time insights, efficient maintenance, and sustainable mobility across the 2W and 3W ecosystem.
+         <br/> •	Our Team 
+         <br/> •	Mentors & Advisors
+         <br/> •	 Affiliations & Partners
+ </p>
         </div>
-      </section>
-
-      {/* Founding Story */}
-      <section className="history">
-        <h2>Join Our EV Revolution</h2>
-        <p>
-          <span className="highlight">Partner with us</span><br/>
-          <span className="highlight">Invest in future-ready EV technology</span><br/>
-          <span className="highlight">Empower your fleet with real-time intelligence</span>
-        </p>
       </section>
 
       {/* Team Leader Bios */}
       <section className="leadership">
-        <h2>Meet Our Leaders</h2>
+        <h2>Our Team</h2>
         <div className="leader-list">
           {leaders.map((leader, idx) => (
             <div className="leader-card" key={idx}>
@@ -94,8 +93,8 @@ const AboutUs = () => {
       <section className="why-exist">
         <h2>Our Purpose</h2>
         <p>
-          Most of Bharat's EV mechanics and service hubs lack access to smart diagnostics—slowing adoption, increasing downtime, and leaving rural communities underserved. We exist to change that. Our deep-tech solutions are built for ruggedness, affordability, and true scalability, ensuring no part of India is left behind in the EV revolution.
-        </p>
+         Across India, many EV service hubs and mechanics still operate without access to smart diagnostic tools—leading to increased downtime, limited reach, and barriers to adoption, especially in rural communities. At <b>Motoget Navyug Innovations</b>, our purpose is to bridge this gap. We develop robust, affordable, and scalable deep-tech solutions that bring intelligent diagnostics to every corner of the country—ensuring no region is left behind in India's electric mobility journey
+          </p>
       </section>
     </div>
   );

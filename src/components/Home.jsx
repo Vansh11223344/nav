@@ -18,10 +18,10 @@ const evImages = [
 ];
 
 const sectionLinks = [
-  { to: '/market-opportunity', label: 'Market Opportunity', info: 'Discover the untapped potential of Bharat’s EV sector.' },
+  { to: '/market-opportunity', label: 'Market Insight', info: 'Discover the untapped potential of Bharat’s EV sector.' },
   { to: '/what-we-do', label: 'Our Work', info: 'Explore our projects, deployments, and impact.' },
   { to: '/service', label: 'Service', info: 'See our service offerings for diagnostics, charging, and skilling.' },
-  { to: '/technology', label: 'Tech Innovation', info: 'Dive into our deep-tech stack and patent-pending solutions.' },
+  { to: '/about', label: 'About Us', info: 'Dive into our deep-tech stack and patent-pending solutions.' },
   { to: '/testimonials', label: 'Testimonials', info: 'Hear from our customers, partners, and trainees.' }
 ];
 
@@ -47,29 +47,22 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Hero Banner */}
-      <section className="hero-banner">
-        <div className="hero-content">
-          <h1>Motoget Navyug Innovations Pvt Ltd: Redefining Innovation in Electric Mobility</h1>
-          <p className="subtitle">Driving Bharat's EV Revolution with Smart Diagnostics and Deep Tech.</p>
-        </div>
-      </section>
+       <section className="hero-banner">
+    <div className="hero-content">
+      <h1>
+        Motoget Navyug Innovations Pvt Ltd
+        <br />
+        <span style={{ fontSize: "1.5rem", fontWeight: "normal" }}>
+          Redefining Innovation in Electric Mobility
+        </span>
+      </h1>
+      <p className="subtitle">
+        Driving Bharat's EV Revolution with Smart Diagnostics and Deep Tech.
+      </p>
+    </div>
+  </section>
 
-      {/* Visual Section */}
-      <section className="visual-section">
-        <div className="visual-placeholder">
-          <img src="/images/companyimg.jpeg" alt="EV diagnostic modules and rural service hubs" />
-        </div>
-      </section>
-
-      {/* The Navyug Edge */}
-      <section className="navyug-edge">
-        <h2>The Navyug Edge</h2>
-        <p>
-         "We deliver intelligent diagnostic solutions engineered specifically for electric vehicles, enabling proactive maintenance and optimized performance to enhance the reliability and experience of EV ownership. Driven by a commitment to safety and sustainability, our technology supports a safer, cleaner and eco-friendly future through smarter, greener mobility."
-        </p>
-      </section>
-
-      {/* EV Gallery Section */}
+ {/* EV Gallery Section */}
       <section className="ev-gallery-section">
         <div className="ev-gallery">
           {evImages.map((src, idx) => (
@@ -97,6 +90,15 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* The Navyug Edge */}
+      <section className="navyug-edge">
+        <h2>The Navyug Edge</h2>
+        <p>
+         "We deliver intelligent diagnostic solutions engineered specifically for electric vehicles, enabling proactive maintenance and optimized performance to enhance the reliability and experience of EV ownership. Driven by a commitment to safety and sustainability, our technology supports a safer, cleaner and eco-friendly future through smarter, greener mobility."
+        </p>
+      </section>
+
 
       {/* Mission */}
       <section className="vision-section">
@@ -214,7 +216,6 @@ const Home = () => {
         </div>
        <div className="footer-nav">
   <Link to="/contact">Contact Us</Link>
-  <Link to="/about">About Us</Link>
   <Link to="/blog">Blog & News</Link>
 </div>
 

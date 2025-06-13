@@ -37,11 +37,11 @@ body, .home-container, .aboutus-container, .service-container, .contact-containe
 .header-logo-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .header-logo-img img {
-  height: 40px;
+  height: 70px;
   width: auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(212, 175, 55, 0.1);
@@ -175,7 +175,7 @@ body, .home-container, .aboutus-container, .service-container, .contact-containe
   }
 
   .header-logo-img img {
-    height: 34px;
+    height: 40px;
   }
 }
 

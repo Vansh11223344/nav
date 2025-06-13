@@ -5,14 +5,13 @@ import './Header.css';
 
 const navLinks = [
   { label: "Home", to: "/" },
-  { label: "What We Do", to: "/what-we-do" },
   { label: "About Us", to: "/about" },
-  { label: "Technology", to: "/technology" },
+  { label: "What We Do", to: "/what-we-do" },
+  { label: "Services", to: "/service" },
   { label: "Market", to: "/market-opportunity" },
   { label: "Testimonials", to: "/testimonials" },
-  { label: "Contact", to: "/contact" },
   { label: "Blog", to: "/blog" },
-  { label: "Services", to: "/service" },
+  { label: "Contact", to: "/contact" },
 ];
 
 const Header = ({ menuOpen, setMenuOpen }) => {
@@ -50,7 +49,6 @@ const Header = ({ menuOpen, setMenuOpen }) => {
         <div className="header-logo-img">
           <img src="/images/companyimg.jpeg" alt="Company Logo" />
         </div>
-        <div className="logo hover-scale">NAVYUG</div>
       </div>
 
       {/* Navigation links */}

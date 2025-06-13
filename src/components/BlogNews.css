@@ -380,50 +380,160 @@ body, .blognews-container {
 
 
 /* Login form styling */
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  max-width: 350px;
-  margin: 0 auto;
-  padding: 30px 0;
+/* Admin Section Enhancements */
+.add-article {
+  max-width: 430px;
+  margin: 60px auto 0 auto;
+  padding: 40px 32px 32px;
+  background: linear-gradient(135deg, var(--card-bg), var(--light) 90%);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(212, 175, 55, 0.08), 0 1.5px 6px rgba(212,175,55,0.07);
+  transition: background 0.4s, box-shadow 0.4s;
+  position: relative;
 }
 
-.login-form label {
-  font-weight: 600;
-  color: var(--dark);
+.admin-title {
   font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-align: center;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.login-form-header, .admin-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.admin-lock-icon {
+  font-size: 2.1rem;
+  color: var(--gold);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.13));
+}
+
+.admin-form-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold-dark, #b5942f);
+  letter-spacing: 0.5px;
+}
+
+.login-form,
+.admin-article-form {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 18px;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  align-items: stretch;
+  padding: 0;
+}
+
+.input-label {
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-main, #222);
+  margin-bottom: 5px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .login-form input[type="email"],
-.login-form input[type="password"] {
+.login-form input[type="password"],
+.admin-article-form input[type="text"],
+.admin-article-form select,
+.admin-article-form textarea {
   padding: 14px 18px;
-  border: 1px solid #ddd;
+  border: 1.5px solid #ddd;
   border-radius: 8px;
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
-  color: var(--text-main);
-  background: var(--bg);
-  transition: var(--transition);
+  color: var(--text-main, #222);
+  background: var(--bg, #fff);
+  box-sizing: border-box;
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.login-form input:focus {
-  border-color: var(--gold);
+.login-form input:focus,
+.admin-article-form input:focus,
+.admin-article-form select:focus,
+.admin-article-form textarea:focus {
+  border-color: var(--gold, #D4AF37);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.13);
+}
+
+.admin-article-form textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--dark);
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 8px;
+}
+
+.btn.admin-btn {
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.08rem;
+  padding: 13px 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.13);
+  transition: background 0.2s, box-shadow 0.2s;
+  width: 100%;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+.btn.admin-btn:hover,
+.btn.admin-btn:focus {
+  background: linear-gradient(90deg, var(--gold-dark, #b5942f), var(--gold));
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.16);
 }
 
 .login-error {
   color: #d32f2f;
+  background: #fff0f0;
+  border-radius: 6px;
+  padding: 7px 12px;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 8px;
   margin-top: -10px;
+  text-align: center;
+  border: 1px solid #f8bcbc;
 }
 
+@media (max-width: 600px) {
+  .add-article {
+    max-width: 97vw;
+    padding: 20px 6vw 18px;
+  }
+  .admin-title {
+    font-size: 1.25rem;
+  }
+  .admin-form-title {
+    font-size: 1rem;
+  }
+}
 
 /* Responsive */
 @media (max-width: 900px) {
