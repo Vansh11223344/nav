@@ -100,7 +100,7 @@ const OurWork = () => {
     <div className="ourwork-container">
       {/* What We Do Section - Now Boxed */}
       <section className="what-we-do-section animate-on-scroll fade-in delay-0">
-        <div className="what-we-do-box">
+        <div className=".what-we-do-section">
           <h1 className="work-title-boxed">What We Do</h1>
           <p>
             Motoget Navyug Innovations is a one-stop solution for electric vehicle servicing and diagnostics. As EV adoption is often hindered by inadequate maintenance support, we're bridging this gap by deploying a network of smart service stations powered by deep-tech solutions—ensuring reliable, accessible, and scalable EV care across India.

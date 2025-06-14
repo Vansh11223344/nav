@@ -51,41 +51,35 @@ body, .contact-container {
   transform: translateY(0);
 }
 
+/* Contact Info Section */
 .contact-info-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-bottom: 40px;
-  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s, transform 0.8s;
 }
 
-.animate-on-scroll.visible .contact-info-section {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .contact-info {
-  flex: 1 1 320px;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 28px;
-  min-width: 260px;
+  justify-content: space-between;
 }
 
 .info-block {
+  flex: 1 1 280px;
   display: flex;
   gap: 16px;
   align-items: flex-start;
   background: var(--card-bg);
   border-radius: 8px;
-  padding: 10px 12px;
+  padding: 20px;
   box-shadow: var(--shadow);
   transition: box-shadow 0.3s, background 0.3s;
   opacity: 0;
   animation: fadeInUp 0.8s forwards;
+  min-width: 260px;
 }
 
 .info-block:hover {
@@ -116,13 +110,21 @@ body, .contact-container {
   100% { transform: scale(1);}
 }
 
+/* Map Section */
+.map-section {
+  width: 100%;
+  margin: 40px 0;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
 .map-embed {
-  flex: 1 1 360px;
-  min-width: 260px;
+  width: 100%;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow);
-  height: 220px;
+  height: 400px;
   opacity: 0;
   animation: slideInRight 1s forwards;
   animation-delay: 0.3s;
@@ -141,22 +143,17 @@ body, .contact-container {
   background: var(--card-bg);
 }
 
+/* Contact Form Section */
 .contact-form-section {
   max-width: 540px;
   margin: 0 auto;
-  background: #fffbe7;
+  background: var(--card-bg);
   border-radius: 12px;
   box-shadow: var(--shadow);
   padding: 32px 24px;
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s, transform 0.8s, background 0.4s;
-  background: var(--card-bg);
-}
-
-.animate-on-scroll.visible .contact-form-section {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .contact-form {
@@ -254,76 +251,16 @@ body, .contact-container {
   to { opacity: 1; transform: translateY(0);}
 }
 
-@media (max-width: 900px) {
-  .contact-info-section {
-    flex-direction: column;
-    gap: 28px;
-  }
-  .map-embed {
-    height: 180px;
-  }
-}
-.animate-on-scroll {
-  opacity: 0;
-  transition: opacity 0.7s, transform 0.7s;
-}
-.animate-on-scroll.visible {
-  opacity: 1;
-  transform: none;
-}
-
-@media (max-width: 600px) {
-  .contact-container {
-    padding: 12px 0 32px 0;
-  }
-
-  .contact-form-section {
-    padding: 18px 4vw;
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    margin: 0 auto;
-  }
-
-  .contact-form {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-  }
-
-  .contact-form input[type="text"],
-  .contact-form input[type="email"],
-  .contact-form select,
-  .contact-form textarea {
-    width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
-    font-size: 1rem;
-    padding: 12px 10px;
-  }
-
-  .btn {
-    width: 100%;
-    padding: 14px 0;
-    font-size: 1.1rem;
-  }
-}
-
-.newsletter-box {
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  gap: 6px !important;
-}
-/* Social Icons Container */
+/* Social Icons */
 .contact-socials {
   display: flex;
   gap: 22px;
   margin-top: 18px;
   justify-content: flex-start;
   align-items: center;
+  width: 100%;
 }
 
-/* Social Link Styling */
 .contact-social-link {
   display: flex;
   align-items: center;
@@ -350,7 +287,6 @@ body, .contact-container {
   color: #fff;
 }
 
-/* Icon inside the circle */
 .contact-social-link .contact-icon,
 .contact-social-link svg {
   width: 28px;
@@ -362,13 +298,8 @@ body, .contact-container {
   transition: color 0.2s;
 }
 
-/* Instagram icon special color (if desired) */
 .contact-social-link[aria-label="Instagram"] {
   background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-.contact-social-link[aria-label="Instagram"]:hover,
-.contact-social-link[aria-label="Instagram"]:focus {
-  background: radial-gradient(circle at 30% 110%, #fd5949 0%, #d6249f 55%, #285AEB 100%);
 }
 
 .contact-social-link.linkedin {
@@ -378,32 +309,83 @@ body, .contact-container {
 
 .contact-social-link.linkedin:hover,
 .contact-social-link.linkedin:focus {
-  background: #004182; /* LinkedIn dark blue */
+  background: #004182;
   color: #fff;
   box-shadow: 0 8px 24px rgba(10,102,194,0.18);
 }
 
-.contact-social-link.linkedin .contact-icon,
-.contact-social-link.linkedin svg {
-  color: #fff;
-  width: 28px;
-  height: 28px;
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .map-embed {
+    height: 300px;
+  }
 }
 
-
-/* Responsive for smaller screens */
 @media (max-width: 600px) {
+  .contact-container {
+    padding: 12px 0 32px 0;
+  }
+
+  .map-embed {
+    height: 250px;
+  }
+
+  .contact-info {
+    flex-direction: column;
+  }
+
+  .info-block {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .contact-form-section {
+    padding: 18px 4vw;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .contact-form input[type="text"],
+  .contact-form input[type="email"],
+  .contact-form select,
+  .contact-form textarea {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    padding: 12px 10px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 14px 0;
+    font-size: 1.1rem;
+  }
+
   .contact-socials {
     gap: 14px;
   }
+
   .contact-social-link {
     width: 40px;
     height: 40px;
     font-size: 1.5rem;
   }
+
   .contact-social-link .contact-icon,
   .contact-social-link svg {
     width: 22px;
     height: 22px;
   }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: none;
 }

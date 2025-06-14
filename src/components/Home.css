@@ -581,8 +581,9 @@ body, .home-container {
 .footer-social-icon {
   margin-right: 7px;
   vertical-align: middle;
-  stroke: var(--primary-color);
-  transition: stroke 0.2s;
+  width: 22px;
+  height: 22px;
+  display: inline-block;
 }
 
 .footer-social a:hover .footer-social-icon,

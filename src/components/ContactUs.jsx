@@ -56,7 +56,6 @@ const ContactUs = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Optional: initialize EmailJS (not always needed, but safe)
   useEffect(() => {
     if (USER_ID) {
       emailjs.init(USER_ID);
@@ -124,8 +123,10 @@ const ContactUs = () => {
             </div>
           ))}
         </div>
+      </div>
 
-        <div className="map-embed slide-in-right">
+      <div className="map-section animate-on-scroll">
+        <div className="map-embed">
           <iframe
             title="Navyug EV Location"
             src="https://www.openstreetmap.org/export/embed.html?bbox=77.0266%2C28.4595%2C77.0366%2C28.4695&amp;layer=mapnik"
@@ -134,7 +135,6 @@ const ContactUs = () => {
             loading="lazy"
           ></iframe>
         </div>
-
           <div className="contact-socials fade-in delay-3">
             <a
               href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/"
