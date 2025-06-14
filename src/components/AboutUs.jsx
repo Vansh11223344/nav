@@ -43,6 +43,13 @@ const AboutUs = () => {
     <div className="aboutus-container">
       {/* Purpose Section */}
       <section className="purpose-section">
+        <h2>Who We Are</h2>
+        <p>
+        Motoget Navyug Innovations Pvt. Ltd. is at the forefront of India's electric mobility transformation. We are developing the nation’s first OEM-ready telematics and battery intelligence platform—engineered to provide secure, scalable, and data-driven solutions tailored for electric vehicles.
+        </p>
+      </section>
+
+       <section className="purpose-section">
         <h2>Our Purpose</h2>
         <p>
           Across India, many EV service hubs and mechanics still operate without access to smart diagnostic tools—leading to increased downtime, limited reach, and barriers to adoption, especially in rural communities. At <b>Motoget Navyug Innovations</b>, our purpose is to bridge this gap. We develop robust, affordable, and scalable deep-tech solutions that bring intelligent diagnostics to every corner of the country—ensuring no region is left behind in India's electric mobility journey.

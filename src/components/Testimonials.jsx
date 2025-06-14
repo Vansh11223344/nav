@@ -119,18 +119,20 @@ const Testimonials = () => {
 
       {/* Share Your Review Section */}
       <div className="share-review-section fade-in delay-2">
-        <h2 className="share-review-title">Share Your Review</h2>
+        <h1 className="share-review-title">Share Your Review</h1>
         <p className="share-review-desc">
           We value your feedback! Click below to share your experience and help us serve you better.
         </p>
-        <a
-          className="btn gold share-review-btn"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfQayOeQxxE7pRYXWlmcpdwwSHFLswIQHEuLePgPxuAqwqJgQ/viewform?usp=header"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Share Your Review
-        </a>
+        <div className="share-review-btn-container">
+          <a
+            className="btn gold share-review-btn"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfQayOeQxxE7pRYXWlmcpdwwSHFLswIQHEuLePgPxuAqwqJgQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Share Your Review
+          </a>
+        </div>
       </div>
 
       {/* FAQ Section */}

@@ -98,13 +98,14 @@ const OurWork = () => {
 
   return (
     <div className="ourwork-container">
-      <h1 className="work-title animate-on-scroll">What We Do</h1>
-      
-      {/* Normal Text Section */}
-      <section className="normal-text-section animate-on-scroll fade-in delay-0">
-        <p>
-         Motoget Navyug Innovations is a one-stop solution for electric vehicle servicing and diagnostics. As EV adoption is often hindered by inadequate maintenance support, we’re bridging this gap by deploying a network of smart service stations powered by deep-tech solutions—ensuring reliable, accessible, and scalable EV care across India.
-        </p>
+      {/* What We Do Section - Now Boxed */}
+      <section className="what-we-do-section animate-on-scroll fade-in delay-0">
+        <div className="what-we-do-box">
+          <h1 className="work-title-boxed">What We Do</h1>
+          <p>
+            Motoget Navyug Innovations is a one-stop solution for electric vehicle servicing and diagnostics. As EV adoption is often hindered by inadequate maintenance support, we're bridging this gap by deploying a network of smart service stations powered by deep-tech solutions—ensuring reliable, accessible, and scalable EV care across India.
+          </p>
+        </div>
       </section>
 
       <div className="modules-visual animate-on-scroll"></div>
