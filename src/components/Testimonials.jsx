@@ -55,7 +55,7 @@ const faqs = [
   },
   {
     question: "How can I apply for a job or internship at Navyug?",
-    answer: "We love welcoming passionate innovators! Job and internship opportunities are regularly updated on our LinkedIn page. Stay connected with us there to apply and stay informed about upcoming roles."
+    answer: "We love welcoming passionate innovators! Job and internship opportunities are regularly updated on our social media channels. Stay connected with us there to apply and stay informed about upcoming roles."
   },
   {
     question: "How is Navyug contributing to sustainability?",
@@ -105,7 +105,7 @@ const Testimonials = () => {
       {/* Reviews Section */}
       <div className="reviews-list fade-in delay-2">
         {testimonials.map((t, idx) => (
-          <div className="review-card" key={idx}>
+          <div className="review-card rectangle" key={idx}>
             <div className="review-satisfaction">{t.satisfaction}</div>
             <blockquote className="review-text">
               <span className="quote-mark">“</span>
@@ -115,6 +115,22 @@ const Testimonials = () => {
             <div className="review-author">— {t.name}</div>
           </div>
         ))}
+      </div>
+
+      {/* Share Your Review Section */}
+      <div className="share-review-section fade-in delay-2">
+        <h2 className="share-review-title">Share Your Review</h2>
+        <p className="share-review-desc">
+          We value your feedback! Click below to share your experience and help us serve you better.
+        </p>
+        <a
+          className="btn gold share-review-btn"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfQayOeQxxE7pRYXWlmcpdwwSHFLswIQHEuLePgPxuAqwqJgQ/viewform?usp=header"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Share Your Review
+        </a>
       </div>
 
       {/* FAQ Section */}

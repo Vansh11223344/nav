@@ -84,7 +84,7 @@ const MarketOpportunity = () => {
 
   return (
     <div className="mo-container">
-      <h1 className="mo-title animate-on-scroll">Market Values</h1>
+      <h1 className="mo-title animate-on-scroll">Market Insights</h1>
 
       {/* Chart 1: India EV Market (2020-2030) */}
       <div className="mo-chart-wrapper animate-on-scroll fade-in delay-0">
@@ -174,15 +174,6 @@ const MarketOpportunity = () => {
           <strong>Passenger Car EV Share:</strong> Doubled from 2% to 4% in 18 months
         </div>
         <div className="mo-chart-credit">Credit: FADA, JMK Research, EVReporter</div>
-      </div>
-
-      <div className="mo-cta">
-        <button
-          className="btn gold fade-in delay-5"
-          onClick={() => navigate('/contact')}
-        >
-          Talk to our team
-        </button>
       </div>
     </div>
   );

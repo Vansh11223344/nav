@@ -6,13 +6,14 @@ import {
   BarChart2,
   Layers,
   Zap,
-  CheckCircle
+  CheckCircle,
+  Truck
 } from 'react-feather';
 import './OurWork.css';
 
 const modules = [
   {
-    icon: <Cpu className="work-icon pulse" />,
+    icon: <Truck className="work-icon pulse" />,
     title: "EV Diagnostics Platform",
     desc: "Plug-and-play hardware and cloud platform for real-time fault detection, remote monitoring, and predictive maintenance of electric vehicles across Bharat.",
   },

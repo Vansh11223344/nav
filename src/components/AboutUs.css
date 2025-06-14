@@ -118,69 +118,63 @@ p {
   }
 }
 
-/* Mission & Vision */
-.mission-vision {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 50px;
-  perspective: 1000px;
+/* Purpose Section - no box, just text */
+.purpose-section {
+  margin-bottom: 60px;
+  text-align: center;
+  background: none;
+  box-shadow: none;
+  padding: 0;
 }
 
-.mission, .vision {
+.purpose-section h2 {
+  margin-bottom: 18px;
+}
+
+.purpose-section p {
+  max-width: 900px;
+  margin: 0 auto 0 auto;
+  font-size: 1.22rem;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+/* Mission & Vision Centered */
+.mission-vision-centered {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+.mission-card, .vision-card {
   background: var(--card-bg);
-  padding: 40px;
+  padding: 40px 32px;
   border-radius: 16px;
   box-shadow: var(--shadow);
-  transform-style: preserve-3d;
-  transform: rotateY(15deg);
-  opacity: 0;
-  animation: cardRotate 1s 0.5s ease-out forwards;
+  flex: 1 1 400px;
+  min-width: 300px;
+  max-width: 540px;
+  text-align: center;
   transition: background 0.4s;
 }
 
-@keyframes cardRotate {
-  to {
-    opacity: 1;
-    transform: rotateY(0);
-  }
+.mission-card h2, .vision-card h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: transparent;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
-/* History */
-.history {
-  background: linear-gradient(135deg, var(--light) 0%, var(--card-bg) 100%);
-  padding: 50px;
-  border-radius: 16px;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
-  transform: scale(0.95);
-  opacity: 0;
-  animation: scaleUp 0.8s 0.7s ease-out forwards;
-  transition: background 0.4s;
-}
-
-@keyframes scaleUp {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.highlight {
-  display: inline-block;
-  position: relative;
-  padding-left: 30px;
-}
-
-.highlight::before {
-  content: '→';
-  position: absolute;
-  left: 0;
-  color: var(--gold);
-  font-weight: bold;
-  animation: bounce 1s infinite alternate;
-}
-
-@keyframes bounce {
-  to { transform: translateX(5px); }
+.mission-card p, .vision-card p {
+  color: var(--text-secondary);
+  font-size: 1.12rem;
+  margin-bottom: 0;
+  font-weight: 400;
 }
 
 /* Leadership */
@@ -251,43 +245,18 @@ p {
   letter-spacing: 1px;
 }
 
-/* Why Exist */
-.why-exist {
-  background: var(--card-bg);
-  padding: 60px;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(212, 175, 55, 0.1);
-  position: relative;
-  opacity: 0;
-  animation: fadeIn 0.8s 1.6s ease-out forwards;
-  transition: background 0.4s;
-}
-
-.why-exist::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background: linear-gradient(to bottom, var(--gold), var(--gold-light));
-  animation: growHeight 1s 1.7s ease-out forwards;
-  transform-origin: top;
-  transform: scaleY(0);
-}
-
-@keyframes growHeight {
-  to { transform: scaleY(1); }
-}
-
 /* Responsive */
 @media (max-width: 992px) {
-  .mission-vision {
-    grid-template-columns: 1fr;
+  .mission-vision-centered {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
-  
-  .history, .why-exist {
-    padding: 40px;
+  .mission-card, .vision-card {
+    max-width: 100%;
+  }
+  .leader-list {
+    gap: 24px;
   }
 }
 
@@ -295,13 +264,8 @@ p {
   h2 {
     font-size: 2rem;
   }
-  
   .leader-card {
     padding: 30px 20px;
-  }
-  
-  .why-exist {
-    padding: 40px 30px;
   }
 }
 
@@ -309,14 +273,11 @@ p {
   .aboutus-container {
     padding: 40px 15px;
   }
-  
-  .history, .why-exist {
-    padding: 30px 20px;
-    clip-path: none;
-  }
-  
   .leader-photo {
     width: 120px;
     height: 120px;
+  }
+  .mission-card, .vision-card {
+    padding: 24px 10px;
   }
 }

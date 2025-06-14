@@ -18,10 +18,10 @@ const evImages = [
 ];
 
 const sectionLinks = [
-  { to: '/market-opportunity', label: 'Market Insight', info: 'Discover the untapped potential of Bharat’s EV sector.' },
+  { to: '/about', label: 'About Us', info: 'Dive into our deep-tech stack and meet out team.' },
   { to: '/what-we-do', label: 'Our Work', info: 'Explore our projects, deployments, and impact.' },
   { to: '/service', label: 'Service', info: 'See our service offerings for diagnostics, charging, and skilling.' },
-  { to: '/about', label: 'About Us', info: 'Dive into our deep-tech stack and patent-pending solutions.' },
+  { to: '/market-opportunity', label: 'Market Insights', info: 'Discover the untapped potential of Bharat’s EV sector.' },
   { to: '/testimonials', label: 'Testimonials', info: 'Hear from our customers, partners, and trainees.' }
 ];
 
@@ -162,7 +162,6 @@ const Home = () => {
             <img src="/images/companyimg.jpeg" alt="Company Logo" style={{ width: 60, borderRadius: 8 }} />
             <div className="footer-company">
               <strong>Motoget Navyug Innovations Pvt Ltd</strong>
-              <div>Redefining Electric Mobility for Bharat</div>
             </div>
           </div>
           <div className="footer-contact">

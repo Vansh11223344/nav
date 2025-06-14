@@ -1,30 +1,42 @@
 import React, { useEffect } from 'react';
-import { Settings, Tool, Cpu, Zap, BatteryCharging, Info, BarChart2 } from 'react-feather';
+import {
+  Cpu,
+  Tool,
+  BatteryCharging,
+  Zap,
+  Settings,
+  BarChart2,
+  Users,
+  MapPin,
+  Award,
+  Layers,
+  Info
+} from 'react-feather';
 import './Service.css';
 
-// Sectioned services data
+// Assign unique icons for each service
 const serviceSections = [
   {
     heading: 'EV Health & Maintenance Services',
     services: [
       {
         icon: <Cpu className="service-icon gold pulse" />,
-        name: '🛠️ EV Diagnostics Service',
+        name: 'EV Diagnostics Service',
         description: 'Get a full diagnostic report of your electric vehicle, including battery, motor, controller, and performance checks.'
       },
       {
         icon: <BatteryCharging className="service-icon gold pulse" />,
-        name: '🔋 Battery Health Check-Up',
+        name: 'Battery Health Check-Up',
         description: 'Identify battery degradation early, understand charging behaviour, and get recommendations to extend battery life.'
       },
       {
         icon: <Tool className="service-icon gold pulse" />,
-        name: '⚙️ Motor & Controller Servicing',
+        name: 'Motor & Controller Servicing',
         description: 'Professional inspection and servicing of electric motors and controllers to ensure peak performance.'
       },
       {
         icon: <Zap className="service-icon gold pulse" />,
-        name: '📍 On-Demand Service Booking',
+        name: 'On-Demand Service Booking',
         description: 'Schedule doorstep diagnostics and minor repairs for two- and three-wheeler EVs.'
       }
     ]
@@ -33,13 +45,13 @@ const serviceSections = [
     heading: 'Infrastructure & Deployment Support',
     services: [
       {
-        icon: <Zap className="service-icon gold pulse" />,
-        name: '⚡ EV Charging Station Setup',
+        icon: <MapPin className="service-icon gold pulse" />,
+        name: 'EV Charging Station Setup',
         description: 'End-to-end setup of EV charging points for homes, businesses, or public areas—includes hardware, software, and maintenance.'
       },
       {
-        icon: <BatteryCharging className="service-icon gold pulse" />,
-        name: '🔁 Battery Swapping Integration',
+        icon: <Award className="service-icon gold pulse" />,
+        name: 'Battery Swapping Integration',
         description: 'For fleet and swapping operators: we offer secure battery authentication, swap tracking, and hardware setup support.'
       }
     ]
@@ -48,13 +60,13 @@ const serviceSections = [
     heading: 'Training & Skilling Services',
     services: [
       {
-        icon: <Tool className="service-icon gold pulse" />,
-        name: '🎓 Technician Skilling Workshops',
+        icon: <Users className="service-icon gold pulse" />,
+        name: 'Technician Skilling Workshops',
         description: 'Hands-on training for aspiring or existing EV mechanics—covering diagnostics, battery service, and motor repair.'
       },
       {
         icon: <Settings className="service-icon gold pulse" />,
-        name: '👨‍🏫 OEM & Dealer Training Programs',
+        name: 'OEM & Dealer Training Programs',
         description: 'Customized skilling modules for electric vehicle dealers, service teams, and battery partners.'
       }
     ]
@@ -64,17 +76,17 @@ const serviceSections = [
     services: [
       {
         icon: <BarChart2 className="service-icon gold pulse" />,
-        name: '📊 OEM & Fleet Solutions',
+        name: 'OEM & Fleet Solutions',
         description: 'Partner with us to integrate our diagnostics and telematics into your electric vehicles or fleet management systems.'
       },
       {
-        icon: <Settings className="service-icon gold pulse" />,
-        name: '🏢 Startup, NGO & Government Collaboration',
+        icon: <Layers className="service-icon gold pulse" />,
+        name: 'Startup, NGO & Government Collaboration',
         description: 'We collaborate on clean mobility initiatives, rural tech training programs, and pilot projects across India.'
       },
       {
-        icon: <Cpu className="service-icon gold pulse" />,
-        name: '🧪 Pilot Projects & Custom Deployments',
+        icon: <Tool className="service-icon gold pulse" />,
+        name: 'Pilot Projects & Custom Deployments',
         description: 'Test new deployments or integrate Navyug’s solutions into your service network—tailored to your region or use case.'
       }
     ]
@@ -113,8 +125,10 @@ const Service = () => {
                 role="region"
                 aria-label={service.name}
               >
-                {service.icon}
-                <h3>{service.name}</h3>
+                <div className="service-card-header">
+                  {service.icon}
+                  <span className="service-name">{service.name}</span>
+                </div>
                 <p>{service.description}</p>
               </div>
             ))}

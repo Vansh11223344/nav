@@ -123,6 +123,18 @@ const ContactUs = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="map-embed slide-in-right">
+          <iframe
+            title="Navyug EV Location"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=77.0266%2C28.4595%2C77.0366%2C28.4695&amp;layer=mapnik"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+
           <div className="contact-socials fade-in delay-3">
             <a
               href="https://www.linkedin.com/company/motoget-navyug-innovations-pvt-ltd/"
@@ -143,17 +155,6 @@ const ContactUs = () => {
               <FaInstagram className="contact-icon pulse" />
             </a>
           </div>
-        </div>
-
-        <div className="map-embed slide-in-right">
-          <iframe
-            title="Navyug EV Location"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=77.0266%2C28.4595%2C77.0366%2C28.4695&amp;layer=mapnik"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-          ></iframe>
-        </div>
       </div>
 
       <div className="contact-form-section animate-on-scroll">
