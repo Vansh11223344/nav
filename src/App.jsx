@@ -11,6 +11,8 @@ import BlogNews from './components/BlogNews';
 import Chatbot from './components/Chatbot';
 import Service from './components/Service';
 import ScrollToTop from './components/ScrollToTop'; // Add this import
+import NotFound from './components/NotFound'; 
+
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
           <Route path="/blog" element={<BlogNews />} />
           <Route path="/chatbot" element={<Chatbot />} />
           <Route path="/service" element={<Service />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Router>
