@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import './AboutUs.css';
+import { Helmet } from 'react-helmet-async';
+
 
 const leaders = [
   {
@@ -40,7 +42,12 @@ const AboutUs = () => {
   }, []);
 
   return (
+    
+    
     <div className="aboutus-container">
+      <Helmet>
+      <title>About Us | Navyug Innovations</title>
+    </Helmet>
       {/* Purpose Section */}
       <section className="purpose-section">
         <h2>Who We Are</h2>

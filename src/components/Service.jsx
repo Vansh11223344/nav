@@ -13,6 +13,7 @@ import {
   Info
 } from 'react-feather';
 import './Service.css';
+import { Helmet } from 'react-helmet-async';
 
 // Assign unique icons for each service
 const serviceSections = [
@@ -113,6 +114,9 @@ const Service = () => {
 
   return (
     <div className="service-container">
+       <Helmet>
+        <title>Service | Navyug Innovations</title>
+      </Helmet>
       <h1 className="service-title animate-on-scroll">Our Services</h1>
       {serviceSections.map((section, idx) => (
         <section className="services-offered animate-on-scroll fade-in" key={section.heading}>

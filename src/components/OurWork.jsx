@@ -10,6 +10,7 @@ import {
   Truck
 } from 'react-feather';
 import './OurWork.css';
+import { Helmet } from 'react-helmet-async';
 
 const modules = [
   {
@@ -98,6 +99,9 @@ const OurWork = () => {
 
   return (
     <div className="ourwork-container">
+       <Helmet>
+        <title>Our Work | Navyug Innovations</title>
+      </Helmet>
       {/* What We Do Section - Now Boxed */}
       <section className="what-we-do-section animate-on-scroll fade-in delay-0">
         <div className=".what-we-do-section">

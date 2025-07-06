@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  BarChart, Bar, AreaChart, Area, ComposedChart
+  BarChart, Bar, AreaChart, Area
 } from 'recharts';
 import './MarketOpportunity.css';
+import { Helmet } from 'react-helmet-async';
 
-// Chart 1: India EV Market (2020-2030) - Your original data
-const chartData = [
+// Chart 1: India EV Market (2020-2030)
+const chartDataFull = [
   { year: 2020, BEV: 0.5, PHEV: 0 },
   { year: 2021, BEV: 0.7, PHEV: 0 },
   { year: 2022, BEV: 1.0, PHEV: 0.1 },
@@ -41,34 +42,61 @@ const globalMarketData = [
   { year: 2029, marketSize: 1089.5 },
 ];
 
-// Chart 4: NEW - EV Market Penetration in India (2023-2025)
+// Chart 4: EV Market Penetration in India (2023-2025)
 const evPenetrationData = [
   { 
     period: '2023', 
     overallMarketShare: 6.8, 
-    passengerCars: 2.0,
-    twoWheelers: 5.5,
     totalSales: 1.6 
   },
   { 
     period: '2024', 
     overallMarketShare: 8.0, 
-    passengerCars: 2.5,
-    twoWheelers: 6.2,
     totalSales: 2.0 
   },
   { 
     period: 'May 2025', 
     overallMarketShare: 8.5, 
-    passengerCars: 4.0,
-    twoWheelers: 6.1,
     totalSales: 2.1 
   },
 ];
 
+// Custom Tooltip for better mobile readability
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        <p className="tooltip-label">{label}</p>
+        {payload.map((entry, index) => (
+          <p key={index} style={{ color: entry.color || '#D4AF37' }}>
+            {entry.name}: {entry.value}{entry.unit || ''}
+          </p>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
+
 const MarketOpportunity = () => {
   const navigate = useNavigate();
+  const [chartData, setChartData] = useState(chartDataFull);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
+  // Update chart data based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 600;
+      setIsMobile(mobile);
+      setChartData(mobile ? chartDataFull.filter(d => d.year >= 2023) : chartDataFull);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Animate on scroll
   useEffect(() => {
     const observer = new window.IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -84,24 +112,27 @@ const MarketOpportunity = () => {
 
   return (
     <div className="mo-container">
+      <Helmet>
+        <title>Market Opportunities | Navyug Innovations</title>
+      </Helmet>
       <h1 className="mo-title animate-on-scroll">Market Insights</h1>
 
-      {/* Chart 1: India EV Market (2020-2030) */}
+      {/* Chart 1: India EV Market */}
       <div className="mo-chart-wrapper animate-on-scroll fade-in delay-0">
-        <h2 className="mo-chart-title">India Electric Vehicle Market (2020–2030)</h2>
+        <h2 className="mo-chart-title">India Electric Vehicle Market ({isMobile ? '2023–2030' : '2020–2030'})</h2>
         <p className="mo-chart-subtitle">(Size in USD Billion)</p>
-        <ResponsiveContainer width="100%" height={400}>
-          <LineChart data={chartData} margin={{ top: 24, right: 40, left: 0, bottom: 16 }}>
+        <ResponsiveContainer width="100%" height={isMobile ? 300 : 400}>
+          <LineChart data={chartData} margin={{ top: 20, right: 20, left: isMobile ? 0 : 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" tick={{ fontSize: 13 }} />
+            <XAxis dataKey="year" tick={{ fontSize: isMobile ? 14 : 13 }} />
             <YAxis
-              label={{ value: 'USD Billion', angle: -90, position: 'insideLeft', fontSize: 13 }}
-              tick={{ fontSize: 13 }}
+              label={{ value: 'USD Billion', angle: -90, position: 'insideLeft', fontSize: isMobile ? 14 : 13 }}
+              tick={{ fontSize: isMobile ? 14 : 13 }}
             />
-            <Tooltip />
-            <Legend verticalAlign="top" height={36} />
-            <Line type="monotone" dataKey="BEV" name="Battery Electric Vehicle (BEV)" stroke="#D4AF37" strokeWidth={3} dot={{ r: 5 }} />
-            <Line type="monotone" dataKey="PHEV" name="Plug-In Hybrid Electric Vehicle (PHEV)" stroke="#0074D9" strokeWidth={3} dot={{ r: 5 }} />
+            <Tooltip content={<CustomTooltip />} />
+            {!isMobile && <Legend verticalAlign="top" height={36} />}
+            <Line type="monotone" dataKey="BEV" name="Battery Electric Vehicle" stroke="#D4AF37" strokeWidth={3} dot={{ r: isMobile ? 4 : 5 }} />
+            <Line type="monotone" dataKey="PHEV" name="Plug-In Hybrid Electric Vehicle" stroke="#0074D9" strokeWidth={3} dot={{ r: isMobile ? 4 : 5 }} />
           </LineChart>
         </ResponsiveContainer>
         <div className="mo-chart-cagr">
@@ -114,15 +145,15 @@ const MarketOpportunity = () => {
       <div className="mo-chart-wrapper animate-on-scroll fade-in delay-1">
         <h2 className="mo-chart-title">India Electric Vehicle Registrations (2018–2023)</h2>
         <p className="mo-chart-subtitle">(In Millions)</p>
-        <ResponsiveContainer width="100%" height={380}>
-          <AreaChart data={indiaEVData} margin={{ top: 24, right: 40, left: 0, bottom: 16 }}>
+        <ResponsiveContainer width="100%" height={isMobile ? 300 : 380}>
+          <AreaChart data={indiaEVData} margin={{ top: 20, right: 20, left: isMobile ? 0 : 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" tick={{ fontSize: 13 }} />
+            <XAxis dataKey="year" tick={{ fontSize: isMobile ? 14 : 13 }} />
             <YAxis
-              label={{ value: 'Registrations (Millions)', angle: -90, position: 'insideLeft', fontSize: 13 }}
-              tick={{ fontSize: 13 }}
+              label={{ value: 'Registrations (Millions)', angle: -90, position: 'insideLeft', fontSize: isMobile ? 14 : 13 }}
+              tick={{ fontSize: isMobile ? 14 : 13 }}
             />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip unit="M" />} />
             <Area type="monotone" dataKey="registrations" stroke="#D4AF37" fill="#D4AF37" fillOpacity={0.6} strokeWidth={3} />
           </AreaChart>
         </ResponsiveContainer>
@@ -133,15 +164,15 @@ const MarketOpportunity = () => {
       <div className="mo-chart-wrapper animate-on-scroll fade-in delay-2">
         <h2 className="mo-chart-title">Global Electric Vehicle Market (2024–2029)</h2>
         <p className="mo-chart-subtitle">(Size in USD Billion)</p>
-        <ResponsiveContainer width="100%" height={380}>
-          <BarChart data={globalMarketData} margin={{ top: 24, right: 40, left: 0, bottom: 16 }}>
+        <ResponsiveContainer width="100%" height={isMobile ? 300 : 380}>
+          <BarChart data={globalMarketData} margin={{ top: 20, right: 20, left: isMobile ? 0 : 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="year" tick={{ fontSize: 13 }} />
+            <XAxis dataKey="year" tick={{ fontSize: isMobile ? 14 : 13 }} />
             <YAxis
-              label={{ value: 'USD Billion', angle: -90, position: 'insideLeft', fontSize: 13 }}
-              tick={{ fontSize: 13 }}
+              label={{ value: 'USD Billion', angle: -90, position: 'insideLeft', fontSize: isMobile ? 14 : 13 }}
+              tick={{ fontSize: isMobile ? 14 : 13 }}
             />
-            <Tooltip />
+            <Tooltip content={<CustomTooltip unit="B" />} />
             <Bar dataKey="marketSize" fill="#D4AF37" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
@@ -151,27 +182,26 @@ const MarketOpportunity = () => {
         <div className="mo-chart-credit">Credit: The Business Research Company</div>
       </div>
 
-      {/* Chart 4: NEW - EV Market Penetration in India */}
+      {/* Chart 4: EV Market Penetration in India */}
       <div className="mo-chart-wrapper animate-on-scroll fade-in delay-3">
         <h2 className="mo-chart-title">EV Market Penetration in India (2023–2025)</h2>
-        <p className="mo-chart-subtitle">(Market Share %)</p>
-        <ResponsiveContainer width="100%" height={380}>
-          <ComposedChart data={evPenetrationData} margin={{ top: 24, right: 40, left: 0, bottom: 16 }}>
+        <p className="mo-chart-subtitle">(Market Share % and Sales in Millions)</p>
+        <ResponsiveContainer width="100%" height={isMobile ? 300 : 380}>
+          <BarChart data={evPenetrationData} margin={{ top: 20, right: 20, left: isMobile ? 0 : 10, bottom: 10 }}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="period" tick={{ fontSize: 13 }} />
+            <XAxis dataKey="period" tick={{ fontSize: isMobile ? 14 : 13 }} />
             <YAxis
-              label={{ value: 'Market Share (%)', angle: -90, position: 'insideLeft', fontSize: 13 }}
-              tick={{ fontSize: 13 }}
+              label={{ value: 'Market Share (%)', angle: -90, position: 'insideLeft', fontSize: isMobile ? 14 : 13 }}
+              tick={{ fontSize: isMobile ? 14 : 13 }}
             />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="overallMarketShare" name="Overall Market Share" fill="#D4AF37" radius={[2, 2, 0, 0]} />
-            <Line type="monotone" dataKey="passengerCars" name="Passenger Cars" stroke="#0074D9" strokeWidth={3} dot={{ r: 5 }} />
-            <Line type="monotone" dataKey="twoWheelers" name="Two Wheelers" stroke="#28a745" strokeWidth={3} dot={{ r: 5 }} />
-          </ComposedChart>
+            <Tooltip content={<CustomTooltip />} />
+            {!isMobile && <Legend />}
+            <Bar dataKey="overallMarketShare" name="Market Share (%)" fill="#D4AF37" radius={[2, 2, 0, 0]} />
+            <Bar dataKey="totalSales" name="Total Sales (M)" fill="#0074D9" radius={[2, 2, 0, 0]} />
+          </BarChart>
         </ResponsiveContainer>
         <div className="mo-chart-cagr">
-          <strong>Passenger Car EV Share:</strong> Doubled from 2% to 4% in 18 months
+          <strong>Key Trend:</strong> Market share grew from 6.8% to 8.5% in 18 months
         </div>
         <div className="mo-chart-credit">Credit: FADA, JMK Research, EVReporter</div>
       </div>

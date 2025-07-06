@@ -14,8 +14,8 @@
 .dark {
   --primary-color: #D4AF37;
   --primary-dark: #e6c763;
-  --secondary-bg: #303030;   /* Lighter dark for sections */
-  --footer-bg: #181818;      /* Darkest for footer */
+  --secondary-bg: #303030;
+  --footer-bg: #181818;
   --card-bg: #232323;
   --text-color: #fffbe7;
   --text-secondary: #e0e0e0;
@@ -44,13 +44,14 @@ body, .home-container {
   border-radius: 0 0 24px 24px;
   margin-bottom: 30px;
 }
+
 .dark .hero-banner {
   background: linear-gradient(90deg, var(--secondary-bg) 70%, #181818 100%);
 }
 
 .hero-content h1 {
   font-family: var(--font-primary);
-  font-size: 2.7rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 18px;
   color: var(--primary-color);
@@ -114,6 +115,7 @@ body, .home-container {
   box-shadow: 0 2px 12px rgba(212, 175, 55, 0.05);
   overflow: visible;
 }
+
 .dark .ev-gallery-section {
   background: var(--secondary-bg);
 }
@@ -125,7 +127,7 @@ body, .home-container {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  min-height: 520px; /* Increased height for full-size look */
+  min-height: 520px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +140,10 @@ body, .home-container {
   height: 520px;
   object-fit: cover;
   position: absolute;
-  left: 0; top: 0; right: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   opacity: 0;
   z-index: 1;
   pointer-events: none;
@@ -173,6 +178,7 @@ body, .home-container {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .gallery-dots .dot.active {
   background: var(--primary-color);
 }
@@ -192,6 +198,7 @@ body, .home-container {
 .testimonials {
   background: var(--card-bg);
 }
+
 .dark .offer,
 .dark .why-choose-us,
 .dark .future-vision,
@@ -309,6 +316,7 @@ body, .home-container {
   padding-left: 18px;
   position: relative;
 }
+
 .future-list li::before {
   content: "→";
   color: var(--primary-color);
@@ -333,9 +341,9 @@ body, .home-container {
   font-style: italic;
   font-family: var(--font-primary);
   margin: 0 0 16px 0;
-   text-align: center;
-  max-width: 700px;  
-  margin-left: auto; 
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
   margin-right: auto;
 }
 
@@ -355,6 +363,7 @@ body, .home-container {
   cursor: pointer;
   transition: background 0.3s;
 }
+
 .testimonial-dots .dot.active {
   background: var(--primary-color);
 }
@@ -461,7 +470,7 @@ body, .home-container {
 .navyug-edge h2 {
   font-size: 2rem;
   font-family: 'Montserrat', sans-serif;
-  color: var(--gold, #D4AF37);
+  color: var(--primary-color);
   margin-bottom: 14px;
 }
 
@@ -489,6 +498,7 @@ body, .home-container {
 .dark .navyug-edge p {
   color: #e0e0e0;
 }
+
 /* Floating Chatbot Button */
 .chatbot-fab {
   position: fixed;
@@ -591,15 +601,44 @@ body, .home-container {
   stroke: #fff;
 }
 
-/* Dark mode: icons remain gold, text turns white on hover */
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.2s, opacity 0.2s;
+}
+
+.footer-social-link:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.footer-social-img {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  object-fit: cover; /* Makes image fill the circular container */
+  margin-right: 12px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.footer-social-link:hover .footer-social-img {
+  opacity: 0.8;
+  transform: scale(1.1); /* Slight zoom on hover for visual feedback */
+}
+
 .dark .footer-social a {
   color: var(--primary-color);
 }
+
 .dark .footer-social a:hover,
 .dark .footer-social a:focus {
   color: #fff;
 }
-
 
 .footer-nav {
   display: flex;
@@ -681,6 +720,11 @@ body, .home-container {
     height: 180px;
     min-height: 180px;
   }
+  .footer-social-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+  }
 }
 
 @media (max-width: 700px) {
@@ -688,13 +732,11 @@ body, .home-container {
   .navyug-edge {
     padding: 18px 4vw 14px 4vw;
   }
-
   .vision-section h2,
   .navyug-edge h2 {
     font-size: 1.22rem;
     margin-bottom: 10px;
   }
-
   .vision-section p,
   .navyug-edge p {
     font-size: 0.99rem;
@@ -710,5 +752,10 @@ body, .home-container {
   .vision-section p,
   .navyug-edge p {
     font-size: 0.93rem;
+  }
+  .footer-social-img {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
   }
 }

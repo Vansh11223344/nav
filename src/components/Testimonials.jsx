@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle } from 'react-feather';
 import './Testimonials.css';
+import { Helmet } from 'react-helmet-async';
 
 const testimonials = [
   {
@@ -89,6 +90,9 @@ const Testimonials = () => {
 
   return (
     <div className="testimonials-container animate-on-scroll">
+       <Helmet>
+        <title>Testimonials | Navyug Innovations</title>
+      </Helmet>
       <h1 className="testimonials-title fade-in delay-0">Testimonials & Impact</h1>
       
       {/* Metrics Section */}

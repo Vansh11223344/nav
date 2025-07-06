@@ -98,6 +98,7 @@ const Home = () => {
           "We deliver intelligent diagnostic solutions engineered specifically for electric vehicles, enabling proactive maintenance and optimized performance to enhance the reliability and experience of EV ownership. Driven by a commitment to safety and sustainability, our technology supports a safer, cleaner and eco-friendly future through smarter, greener mobility."
         </p>
       </section>
+
       {/* Mission */}
       <section className="vision-section">
         <h2>Our Mission</h2>
@@ -112,7 +113,7 @@ const Home = () => {
       <section className="vision-section">
         <h2>Our Vision</h2>
         <p>
-          Our vision is to be the pioneer smart, data-driven EV telematics solution in India, designed for the future of electric mobility. We aspire to stand alongside the world’s leading tech innovators by connecting every electric vehicle to a unified intelligent ecosystem. Our goal is to unlock real-time insights that enhance efficiency, elevate safety, and optimize performance across the EV landscape. We aim to reinvent the way India commutes — smarter, cleaner and in tune.
+          Our vision is to be the pioneer smart, data-driven EV telematics solution in India, designed for the future of electric mobility. We aspire to stand alongside the world’s leading tech innovators by connecting every electric vehicle to a unified intelligent ecosystem. Our goal is to unlock real-time insights that enhance efficiency, elevate safety, and optimize performance across the EV landscape. We aim to reinvent the way India commutes — smarter, cleaner and in tune.
         </p>
       </section>
 
@@ -165,7 +166,7 @@ const Home = () => {
           <div className="footer-contact">
             <div><strong>Contact:</strong> +91- 98355 94986</div>
             <div><strong>Email:</strong> <a href="mailto:navyuginnovation@gmail.com">navyuginnovation@gmail.com</a></div>
-            <div><strong>Address:</strong>Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand</div>
+            <div><strong>Address:</strong> Ragunath Garden, Pragatipath, Makchund Toli, Ranchi – 834001, Jharkhand</div>
           </div>
           <div className="footer-social">
             <a
@@ -173,23 +174,14 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
+              className="footer-social-link"
             >
-              {/* Official Instagram SVG */}
-              <svg width="22" height="22" viewBox="0 0 448 448" className="footer-social-icon" style={{ marginRight: 7 }}>
-                <defs>
-                  <radialGradient id="IG-gradient" cx="30%" cy="107%" r="150%" fx="10%" fy="100%">
-                    <stop offset="0%" stopColor="#fdf497"/>
-                    <stop offset="5%" stopColor="#fdf497"/>
-                    <stop offset="45%" stopColor="#fd5949"/>
-                    <stop offset="60%" stopColor="#d6249f"/>
-                    <stop offset="90%" stopColor="#285AEB"/>
-                  </radialGradient>
-                </defs>
-                <rect x="0" y="0" width="448" height="448" rx="90" fill="url(#IG-gradient)" />
-                <circle cx="224" cy="224" r="90" fill="#fff" opacity="0.7"/>
-                <circle cx="224" cy="224" r="60" fill="none" stroke="#fff" strokeWidth="26"/>
-                <circle cx="340" cy="108" r="21" fill="#fff"/>
-              </svg>
+              <img
+                src="./images/instalogo.png"
+                alt="Instagram"
+                className="footer-social-img"
+                style={{ width: 36, height: 36, marginRight: 12 }}
+              />
               Instagram
             </a>
             <a
@@ -197,12 +189,14 @@ const Home = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
+              className="footer-social-link"
             >
-              {/* Official LinkedIn SVG */}
-              <svg width="22" height="22" viewBox="0 0 448 448" className="footer-social-icon" style={{ marginRight: 7 }}>
-                <rect width="448" height="448" rx="90" fill="#0077B5"/>
-                <path d="M120 170h60v180h-60zM150 120a30 30 0 1 1 0 60 30 30 0 0 1 0-60zm90 50h58v25h1c8-15 27-31 56-31 60 0 71 39 71 90v96h-60v-85c0-20-1-46-30-46-30 0-34 22-34 44v87h-60z" fill="#fff"/>
-              </svg>
+              <img
+                src="/images/linkedinlogo.jpg"
+                alt="LinkedIn"
+                className="footer-social-img"
+                style={{ width: 35, height: 35, marginRight: 12 }}
+              />
               LinkedIn
             </a>
           </div>

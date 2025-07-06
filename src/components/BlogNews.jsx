@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './BlogNews.css';
+import { Helmet } from 'react-helmet-async';
 
-// Use environment variables for admin credentials
-const ADMIN_EMAIL = import.meta.env.VITE_ADMIN_EMAIL || "admin@example.com";
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || "securepassword123";
 
 const initialArticles = [
   { 
@@ -65,6 +63,9 @@ const BlogNews = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [login, setLogin] = useState({ email: '', password: '' });
   const [loginError, setLoginError] = useState('');
+
+  // Video refs for Intersection Observer
+  const videoRefs = useRef([]);
 
   // Normalize category strings for filtering
   const normalize = str => str.toLowerCase();
@@ -158,8 +159,38 @@ const BlogNews = () => {
     return () => observer.disconnect();
   }, [articles]);
 
+  // Autoplay videos when they scroll into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().catch(err => console.log('Video play failed:', err));
+          } else {
+            video.pause();
+          }
+        });
+      },
+      { threshold: 0.5 } // Trigger when 50% of the video is visible (approx. centered)
+    );
+
+    videoRefs.current.forEach(video => {
+      if (video) observer.observe(video);
+    });
+
+    return () => {
+      videoRefs.current.forEach(video => {
+        if (video) observer.unobserve(video);
+      });
+    };
+  }, []);
+
   return (
     <div className="blognews-container">
+      <Helmet>
+        <title>Blog News | Navyug Innovations</title>
+      </Helmet>
       <h1 className="blognews-title">Navyug Insights</h1>
 
       {featuredArticle && (
@@ -208,18 +239,22 @@ const BlogNews = () => {
       <div className="blognews-videos-wrapper">
         <video
           className="blognews-video"
+          ref={el => (videoRefs.current[0] = el)}
           src="./videos/blogclip1.mp4"
-          controls
+          muted
           loop
+          playsInline
           poster="./images/test2.jpeg"
         >
           Sorry, your browser doesn't support embedded videos.
         </video>
         <video
           className="blognews-video"
+          ref={el => (videoRefs.current[1] = el)}
           src="./videos/blogclip2.mp4"
-          controls
+          muted
           loop
+          playsInline
           poster="./images/test1.jpeg"
         >
           Sorry, your browser doesn't support embedded videos.
