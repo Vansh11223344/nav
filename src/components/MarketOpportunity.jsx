@@ -5,7 +5,6 @@ import {
   BarChart, Bar, AreaChart, Area
 } from 'recharts';
 import './MarketOpportunity.css';
-import { Helmet } from 'react-helmet-async';
 
 // Chart 1: India EV Market (2020-2030)
 const chartDataFull = [
@@ -112,9 +111,9 @@ const MarketOpportunity = () => {
 
   return (
     <div className="mo-container">
-      <Helmet>
+    
         <title>Market Opportunities | Navyug Innovations</title>
-      </Helmet>
+     
       <h1 className="mo-title animate-on-scroll">Market Insights</h1>
 
       {/* Chart 1: India EV Market */}

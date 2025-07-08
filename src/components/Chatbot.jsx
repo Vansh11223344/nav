@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Zap, Send, MessageCircle } from 'react-feather';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+
 import './Chatbot.css';
 
 const FAQ = [
@@ -294,9 +294,9 @@ const Chatbot = () => {
 
   return (
     <div className="chatbot-container">
-      <Helmet>
+      
         <title>ChatBot- To Answer Your Questions | Navyug Innovations</title>
-      </Helmet>
+     
       <header className="chatbot-header">
         <Zap className="brand-icon" />
         <span>Navyug EV Chatbot</span>

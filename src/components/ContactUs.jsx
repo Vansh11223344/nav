@@ -3,7 +3,6 @@ import { MapPin, Phone, Mail, Send } from 'react-feather';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
 import './ContactUs.css';
-import { Helmet } from 'react-helmet-async';
 
 // Get EmailJS IDs from environment variables
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -110,9 +109,9 @@ const ContactUs = () => {
 
   return (
     <div className="contact-container">
-      <Helmet>
+     
         <title>Contact Us | Navyug Innovations</title>
-      </Helmet>
+      
       <h1 className="contact-title animate-on-scroll">Contact Us</h1>
 
       <div className="contact-info-section animate-on-scroll">

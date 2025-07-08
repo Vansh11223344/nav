@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './BlogNews.css';
-import { Helmet } from 'react-helmet-async';
 
 
 const initialArticles = [
@@ -188,9 +187,9 @@ const BlogNews = () => {
 
   return (
     <div className="blognews-container">
-      <Helmet>
+    
         <title>Blog News | Navyug Innovations</title>
-      </Helmet>
+      <Meta name="description" content="Welcome to Navyug's official website" />
       <h1 className="blognews-title">Navyug Insights</h1>
 
       {featuredArticle && (
