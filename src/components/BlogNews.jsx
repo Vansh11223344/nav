@@ -189,8 +189,7 @@ const BlogNews = () => {
     <div className="blognews-container">
     
         <title>Blog News | Navyug Innovations</title>
-      <Meta name="description" content="Welcome to Navyug's official website" />
-      <h1 className="blognews-title">Navyug Insights</h1>
+        <h1 className="blognews-title">Navyug Insights</h1>
 
       {featuredArticle && (
         <section className="featured-article">

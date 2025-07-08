@@ -46,8 +46,7 @@ const AboutUs = () => {
     <div className="aboutus-container">
     
        <Title>About Us | Navyug Innovations</Title>
-      <Meta name="description" content="Welcome to Navyug's official website" />
-   
+     
       {/* Purpose Section */}
       <section className="purpose-section">
         <h2>Who We Are</h2>
