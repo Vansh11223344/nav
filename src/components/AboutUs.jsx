@@ -45,7 +45,7 @@ const AboutUs = () => {
     
     <div className="aboutus-container">
     
-       <Title>About Us | Navyug Innovations</Title>
+       <title>About Us | Navyug Innovations</title>
      
       {/* Purpose Section */}
       <section className="purpose-section">
